@@ -11,10 +11,6 @@ namespace Timetable.Models
 
         public string TeacherName { get; set; }
 
-        public Teacher(int teacherID, string teacherName)
-        {
-            TeacherID = teacherID;
-            TeacherName = teacherName;
-        }
+
     }
 }

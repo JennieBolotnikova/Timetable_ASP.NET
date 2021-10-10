@@ -10,10 +10,6 @@ namespace Timetable.Models
         public int BuildingID { get; set; }
         public string BuildingName { get; set; }
 
-        public Building(int buildingID, string buildingName)
-        {
-            BuildingID = buildingID;
-            BuildingName = buildingName;
-        }
+
     }
 }

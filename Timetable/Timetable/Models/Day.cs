@@ -7,12 +7,6 @@ namespace Timetable.Models
 {
     public class Day
     {
-        public Day(int dayID, string dayName, string dayShortName)
-        {
-            DayID = dayID;
-            DayName = dayName;
-            DayShortName = dayShortName;
-        }
 
         public int DayID { get; set; }
         public string DayName { get; set; }

@@ -10,10 +10,6 @@ namespace Timetable.Models
         public int FacultyID { get; set; }
         public string FacultyName { get; set; }
 
-        public Faculty(int facultyID, string facultyName)
-        {
-            FacultyID = facultyID;
-            FacultyName = facultyName;
-        }
+
     }
 }
