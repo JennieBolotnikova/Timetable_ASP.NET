@@ -64,6 +64,48 @@ namespace Timetable.Models
                 new Day { DayID  = 5, DayName = "Пятница", DayShortName = "ПТ"},
                 new Day { DayID  = 6, DayName = "Суббота", DayShortName = "СБ"}
                 });
+
+            Teacher[] teachers = new Teacher[1000];
+            for(int i = 0; i < 1000; i++)
+            {
+                var teacher = new Teacher { TeacherID = i + 1, TeacherName = "TeacherName" + i + 1 };
+                teachers.Append(teacher);
+            }
+            modelBuilder.Entity<Teacher>().HasData(teachers);
+
+            Discipline[] disciplines = new Discipline[1000];
+            for (int i = 0; i < 1000; i++)
+            {
+                var discipline = new Discipline { DisciplineID = i + 1, DisciplineNmae = "Discipline" + i + 1 };
+                disciplines.Append(discipline);
+            }
+            modelBuilder.Entity<Discipline>().HasData(disciplines);
+
+            Classroom[] classrooms = new Classroom[155];
+            for(int i = 0; i < 20; i++)
+            {
+                var classroom1 = new Classroom { ClassroomID = i + 1, ClassroomNumber = i + 1, BuildingID = 1, NumberOfSeats = 100, ClassroomTypeID = 1 };
+                classrooms.Append(classroom1);
+            }
+
+            for (int i = 0; i < 80; i++)
+            {
+                var classroom2 = new Classroom { ClassroomID = i + 21, ClassroomNumber = i + 21, BuildingID = 1, NumberOfSeats = 30, ClassroomTypeID = 2 };
+                classrooms.Append(classroom2);
+            }
+
+            for (int i = 0; i < 15; i++)
+            {
+                var classroom3 = new Classroom { ClassroomID = i + 1, ClassroomNumber = i + 1, BuildingID = 2, NumberOfSeats = 100, ClassroomTypeID = 1 };
+                classrooms.Append(classroom3);
+            }
+
+            for (int i = 0; i < 40; i++)
+            {
+                var classroom4 = new Classroom { ClassroomID = i + 16, ClassroomNumber = i + 16, BuildingID = 2, NumberOfSeats = 30, ClassroomTypeID = 2 };
+                classrooms.Append(classroom4);
+            }
+            modelBuilder.Entity<Classroom>().HasData(classrooms);
         }
     }
 }
