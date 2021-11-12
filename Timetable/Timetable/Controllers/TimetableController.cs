@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Timetable.Infrastructure;
 using Timetable.Core.Entities;
 
-namespace Timetable.Controllers
+namespace Timetable.Web.Controllers
 {
-    public class BuildingController : Controller
+    public class TimetableController : Controller
     {
         private TimetableContext db;
 
-        public BuildingController(TimetableContext context)
+        public TimetableController(TimetableContext context)
         {
             db = context;
         }
@@ -21,20 +21,20 @@ namespace Timetable.Controllers
         [HttpGet]
         public IActionResult Update(int id)
         {
-            var item = db.Buildings.First(x => x.BuildingID == id);
+            var item = db.Timetables.First(x => x.ID == id);
 
             return View(item);
         }
 
         [HttpPost]
-        public IActionResult Update(Building item)
+        public IActionResult Update(Timetable.Core.Entities.Timetable item)
         {
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    db.Buildings.Update(item);
+                    db.Timetables.Update(item);
                     db.SaveChanges();
                 }
                 catch (Exception)
@@ -48,11 +48,11 @@ namespace Timetable.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(Building item)
+        public IActionResult Delete(Timetable.Core.Entities.Timetable item)
         {
             if (ModelState.IsValid)
             {
-                db.Buildings.Remove(item);
+                db.Timetables.Remove(item);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -63,7 +63,7 @@ namespace Timetable.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var mark = db.Buildings.First(x => x.BuildingID == id);
+            var mark = db.Timetables.First(x => x.ID == id);
             return View(mark);
         }
 
@@ -72,9 +72,9 @@ namespace Timetable.Controllers
         {
             if (search == null)
             {
-                return View(db.Buildings.ToList());
+                return View(db.Timetables.ToList());
             }
-            var list = db.Buildings.ToList();
+            var list = db.Timetables.ToList();
 
             return View(list);
         }
@@ -82,7 +82,7 @@ namespace Timetable.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View(db.Buildings.ToList());
+            return View(db.Timetables.ToList());
         }
 
         [HttpGet]
@@ -92,21 +92,21 @@ namespace Timetable.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Building item)
+        public IActionResult Create(Timetable.Core.Entities.Timetable item)
         {
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    db.Buildings.Add(item);
+                    db.Timetables.Add(item);
                     db.SaveChanges();
                 }
                 catch (Exception)
                 {
 
                 }
-                return RedirectToAction("Index", "Building");
+                return RedirectToAction("Index", "Timetable");
             }
 
             return RedirectToAction("ErrorIndex", "Home");

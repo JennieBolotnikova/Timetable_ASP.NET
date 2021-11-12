@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Timetable.Infrastructure;
 using Timetable.Core.Entities;
 
-namespace Timetable.Controllers
+namespace Timetable.Web.Controllers
 {
-    public class BuildingController : Controller
+    public class DayController : Controller
     {
         private TimetableContext db;
 
-        public BuildingController(TimetableContext context)
+        public DayController(TimetableContext context)
         {
             db = context;
         }
@@ -21,20 +21,20 @@ namespace Timetable.Controllers
         [HttpGet]
         public IActionResult Update(int id)
         {
-            var item = db.Buildings.First(x => x.BuildingID == id);
+            var item = db.Days.First(x => x.DayID == id);
 
             return View(item);
         }
 
         [HttpPost]
-        public IActionResult Update(Building item)
+        public IActionResult Update(Day item)
         {
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    db.Buildings.Update(item);
+                    db.Days.Update(item);
                     db.SaveChanges();
                 }
                 catch (Exception)
@@ -48,11 +48,11 @@ namespace Timetable.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(Building item)
+        public IActionResult Delete(Day item)
         {
             if (ModelState.IsValid)
             {
-                db.Buildings.Remove(item);
+                db.Days.Remove(item);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -63,7 +63,7 @@ namespace Timetable.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var mark = db.Buildings.First(x => x.BuildingID == id);
+            var mark = db.Days.First(x => x.DayID == id);
             return View(mark);
         }
 
@@ -72,9 +72,9 @@ namespace Timetable.Controllers
         {
             if (search == null)
             {
-                return View(db.Buildings.ToList());
+                return View(db.Days.ToList());
             }
-            var list = db.Buildings.ToList();
+            var list = db.Days.ToList();
 
             return View(list);
         }
@@ -82,7 +82,7 @@ namespace Timetable.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View(db.Buildings.ToList());
+            return View(db.Days.ToList());
         }
 
         [HttpGet]
@@ -92,21 +92,21 @@ namespace Timetable.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Building item)
+        public IActionResult Create(Day item)
         {
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    db.Buildings.Add(item);
+                    db.Days.Add(item);
                     db.SaveChanges();
                 }
                 catch (Exception)
                 {
 
                 }
-                return RedirectToAction("Index", "Building");
+                return RedirectToAction("Index", "Day");
             }
 
             return RedirectToAction("ErrorIndex", "Home");

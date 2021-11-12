@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Timetable.Infrastructure;
 using Timetable.Core.Entities;
 
-namespace Timetable.Controllers
+namespace Timetable.Web.Controllers
 {
-    public class BuildingController : Controller
+    public class FacultyController : Controller
     {
         private TimetableContext db;
 
-        public BuildingController(TimetableContext context)
+        public FacultyController(TimetableContext context)
         {
             db = context;
         }
@@ -21,20 +21,20 @@ namespace Timetable.Controllers
         [HttpGet]
         public IActionResult Update(int id)
         {
-            var item = db.Buildings.First(x => x.BuildingID == id);
+            var item = db.Faculties.First(x => x.FacultyID == id);
 
             return View(item);
         }
 
         [HttpPost]
-        public IActionResult Update(Building item)
+        public IActionResult Update(Faculty item)
         {
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    db.Buildings.Update(item);
+                    db.Faculties.Update(item);
                     db.SaveChanges();
                 }
                 catch (Exception)
@@ -48,11 +48,11 @@ namespace Timetable.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(Building item)
+        public IActionResult Delete(Faculty item)
         {
             if (ModelState.IsValid)
             {
-                db.Buildings.Remove(item);
+                db.Faculties.Remove(item);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -63,7 +63,7 @@ namespace Timetable.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var mark = db.Buildings.First(x => x.BuildingID == id);
+            var mark = db.Faculties.First(x => x.FacultyID == id);
             return View(mark);
         }
 
@@ -72,9 +72,9 @@ namespace Timetable.Controllers
         {
             if (search == null)
             {
-                return View(db.Buildings.ToList());
+                return View(db.Faculties.ToList());
             }
-            var list = db.Buildings.ToList();
+            var list = db.Faculties.ToList();
 
             return View(list);
         }
@@ -82,7 +82,7 @@ namespace Timetable.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View(db.Buildings.ToList());
+            return View(db.Faculties.ToList());
         }
 
         [HttpGet]
@@ -92,21 +92,21 @@ namespace Timetable.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Building item)
+        public IActionResult Create(Faculty item)
         {
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    db.Buildings.Add(item);
+                    db.Faculties.Add(item);
                     db.SaveChanges();
                 }
                 catch (Exception)
                 {
 
                 }
-                return RedirectToAction("Index", "Building");
+                return RedirectToAction("Index", "Faculty");
             }
 
             return RedirectToAction("ErrorIndex", "Home");

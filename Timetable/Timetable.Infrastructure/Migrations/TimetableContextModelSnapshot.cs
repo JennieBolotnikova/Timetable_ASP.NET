@@ -181,6 +181,24 @@ namespace Timetable.Infrastructure.Migrations
                     b.ToTable("Groups");
                 });
 
+            modelBuilder.Entity("Timetable.Core.Entities.Semester", b =>
+                {
+                    b.Property<int>("SemesterID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("SemesterNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SemesterTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SemesterID");
+
+                    b.ToTable("Semesters");
+                });
+
             modelBuilder.Entity("Timetable.Core.Entities.Teacher", b =>
                 {
                     b.Property<int>("TeacherID")
@@ -222,6 +240,9 @@ namespace Timetable.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("LessonID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SemesterID")
                         .HasColumnType("int");
 
                     b.Property<int>("TeacherID")

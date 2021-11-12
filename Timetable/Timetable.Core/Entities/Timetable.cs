@@ -7,7 +7,6 @@ namespace Timetable.Core.Entities
 {
     public class Timetable
     {
-
         public int ID { get; set; }
         public DateTime Date { get; set; }
         public int DayID { get; set; }
@@ -17,5 +16,6 @@ namespace Timetable.Core.Entities
         public int GroupID { get; set; }
         public int TeacherID { get; set; }
         public int ClassroomID { get; set; }
+        public int SemesterID { get; set; }
     }
 }

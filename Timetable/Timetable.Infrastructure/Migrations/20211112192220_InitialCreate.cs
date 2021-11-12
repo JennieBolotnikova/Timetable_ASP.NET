@@ -134,6 +134,20 @@ namespace Timetable.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Semesters",
+                columns: table => new
+                {
+                    SemesterID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SemesterNumber = table.Column<int>(type: "int", nullable: false),
+                    SemesterTitle = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Semesters", x => x.SemesterID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Teachers",
                 columns: table => new
                 {
@@ -159,7 +173,8 @@ namespace Timetable.Infrastructure.Migrations
                     ActivityTypeID = table.Column<int>(type: "int", nullable: false),
                     GroupID = table.Column<int>(type: "int", nullable: false),
                     TeacherID = table.Column<int>(type: "int", nullable: false),
-                    ClassroomID = table.Column<int>(type: "int", nullable: false)
+                    ClassroomID = table.Column<int>(type: "int", nullable: false),
+                    SemesterID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -195,6 +210,9 @@ namespace Timetable.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Groups");
+
+            migrationBuilder.DropTable(
+                name: "Semesters");
 
             migrationBuilder.DropTable(
                 name: "Teachers");

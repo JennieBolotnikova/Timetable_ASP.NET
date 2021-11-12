@@ -18,4 +18,18 @@
     <ProjectReference Include="..\Timetable.Infrastructure\Timetable.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\ActivityType\" />
+    <Folder Include="Views\Bell\" />
+    <Folder Include="Views\Building\" />
+    <Folder Include="Views\Classroom\" />
+    <Folder Include="Views\ClassroomType\" />
+    <Folder Include="Views\Day\" />
+    <Folder Include="Views\Discipline\" />
+    <Folder Include="Views\Faculty\" />
+    <Folder Include="Views\Group\" />
+    <Folder Include="Views\Teacher\" />
+    <Folder Include="Views\Timetable\" />
+  </ItemGroup>
+
 </Project>

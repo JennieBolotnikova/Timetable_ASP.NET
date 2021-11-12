@@ -22,10 +22,11 @@ namespace Timetable.Infrastructure
         public DbSet<Timetable.Core.Entities.Timetable> Timetables { get; set; }
         public DbSet<Classroom> Classrooms { get; set; }
         public DbSet<ClassroomType> ClassroomTypes { get; set; }
+        public DbSet<Semester> Semesters { get; set; }
         public TimetableContext()
         {
-            Database.EnsureDeleted();   // удаляем бд со старой схемой
-            Database.EnsureCreated();   // создаем бд с новой схемой
+            //Database.EnsureDeleted();   // удаляем бд со старой схемой
+            //Database.EnsureCreated();   // создаем бд с новой схемой
             //    Database.EnsureCreated();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
