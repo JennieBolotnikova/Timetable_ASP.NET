@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mlsSuB5uJwruVn80oS92VLgy6u+7VccPJZOo8FDX8bumyeqMrwB2ilU6X0lXz/g3bL3bLOOxjQf7O+MIDE0U9g==",
+  "dgSpecHash": "E4/O6fiLvF0W5M0S+IEFMRJwghtvIpdzC3NwTI2lVQ5ws5f1gbQ4jdt87oQ6Z2cxS1F1vxVIKRY2mauz+tbWNQ==",
   "success": true,
-  "projectFilePath": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable\\Timetable.Web.csproj",
+  "projectFilePath": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable\\TimetableApp.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

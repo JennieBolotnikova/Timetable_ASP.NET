@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Timetable.Infrastructure;
+using TimetableApp.DataAccess;
 
-namespace Timetable.Infrastructure.Migrations
+namespace TimetableApp.DataAccess.Migrations
 {
     [DbContext(typeof(TimetableContext))]
     partial class TimetableContextModelSnapshot : ModelSnapshot
@@ -19,7 +19,7 @@ namespace Timetable.Infrastructure.Migrations
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Timetable.Core.Entities.ActivityType", b =>
+            modelBuilder.Entity("Timetable.DataAccess.Entities.ActivityType", b =>
                 {
                     b.Property<int>("ActivityTypeID")
                         .ValueGeneratedOnAdd()
@@ -37,7 +37,7 @@ namespace Timetable.Infrastructure.Migrations
                     b.ToTable("ActivityTypes");
                 });
 
-            modelBuilder.Entity("Timetable.Core.Entities.Bell", b =>
+            modelBuilder.Entity("Timetable.DataAccess.Entities.Bell", b =>
                 {
                     b.Property<int>("BellID")
                         .ValueGeneratedOnAdd()
@@ -55,7 +55,7 @@ namespace Timetable.Infrastructure.Migrations
                     b.ToTable("Bells");
                 });
 
-            modelBuilder.Entity("Timetable.Core.Entities.Building", b =>
+            modelBuilder.Entity("Timetable.DataAccess.Entities.Building", b =>
                 {
                     b.Property<int>("BuildingID")
                         .ValueGeneratedOnAdd()
@@ -70,7 +70,7 @@ namespace Timetable.Infrastructure.Migrations
                     b.ToTable("Buildings");
                 });
 
-            modelBuilder.Entity("Timetable.Core.Entities.Classroom", b =>
+            modelBuilder.Entity("Timetable.DataAccess.Entities.Classroom", b =>
                 {
                     b.Property<int>("ClassroomID")
                         .ValueGeneratedOnAdd()
@@ -94,7 +94,7 @@ namespace Timetable.Infrastructure.Migrations
                     b.ToTable("Classrooms");
                 });
 
-            modelBuilder.Entity("Timetable.Core.Entities.ClassroomType", b =>
+            modelBuilder.Entity("Timetable.DataAccess.Entities.ClassroomType", b =>
                 {
                     b.Property<int>("ClassroomTypeID")
                         .ValueGeneratedOnAdd()
@@ -109,7 +109,7 @@ namespace Timetable.Infrastructure.Migrations
                     b.ToTable("ClassroomTypes");
                 });
 
-            modelBuilder.Entity("Timetable.Core.Entities.Day", b =>
+            modelBuilder.Entity("Timetable.DataAccess.Entities.Day", b =>
                 {
                     b.Property<int>("DayID")
                         .ValueGeneratedOnAdd()
@@ -127,7 +127,7 @@ namespace Timetable.Infrastructure.Migrations
                     b.ToTable("Days");
                 });
 
-            modelBuilder.Entity("Timetable.Core.Entities.Discipline", b =>
+            modelBuilder.Entity("Timetable.DataAccess.Entities.Discipline", b =>
                 {
                     b.Property<int>("DisciplineID")
                         .ValueGeneratedOnAdd()
@@ -142,7 +142,7 @@ namespace Timetable.Infrastructure.Migrations
                     b.ToTable("Disciplines");
                 });
 
-            modelBuilder.Entity("Timetable.Core.Entities.Faculty", b =>
+            modelBuilder.Entity("Timetable.DataAccess.Entities.Faculty", b =>
                 {
                     b.Property<int>("FacultyID")
                         .ValueGeneratedOnAdd()
@@ -157,7 +157,7 @@ namespace Timetable.Infrastructure.Migrations
                     b.ToTable("Faculties");
                 });
 
-            modelBuilder.Entity("Timetable.Core.Entities.Group", b =>
+            modelBuilder.Entity("Timetable.DataAccess.Entities.Group", b =>
                 {
                     b.Property<int>("GroupID")
                         .ValueGeneratedOnAdd()
@@ -181,7 +181,7 @@ namespace Timetable.Infrastructure.Migrations
                     b.ToTable("Groups");
                 });
 
-            modelBuilder.Entity("Timetable.Core.Entities.Semester", b =>
+            modelBuilder.Entity("Timetable.DataAccess.Entities.Semester", b =>
                 {
                     b.Property<int>("SemesterID")
                         .ValueGeneratedOnAdd()
@@ -199,7 +199,7 @@ namespace Timetable.Infrastructure.Migrations
                     b.ToTable("Semesters");
                 });
 
-            modelBuilder.Entity("Timetable.Core.Entities.Teacher", b =>
+            modelBuilder.Entity("Timetable.DataAccess.Entities.Teacher", b =>
                 {
                     b.Property<int>("TeacherID")
                         .ValueGeneratedOnAdd()
@@ -214,7 +214,7 @@ namespace Timetable.Infrastructure.Migrations
                     b.ToTable("Teachers");
                 });
 
-            modelBuilder.Entity("Timetable.Core.Entities.Timetable", b =>
+            modelBuilder.Entity("Timetable.DataAccess.Entities.Timetable", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()

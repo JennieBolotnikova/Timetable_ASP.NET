@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
-using Timetable.Core.Entities;
+using TimetableApp.DataAccess.Entities;
 
 
-namespace Timetable.Infrastructure
+namespace TimetableApp.DataAccess
 {
     public class TimetableContext : DbContext
     {
@@ -19,20 +19,17 @@ namespace Timetable.Infrastructure
         public DbSet<Faculty> Faculties { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
-        public DbSet<Timetable.Core.Entities.Timetable> Timetables { get; set; }
+        public DbSet<Timetable> Timetables { get; set; }
         public DbSet<Classroom> Classrooms { get; set; }
         public DbSet<ClassroomType> ClassroomTypes { get; set; }
         public DbSet<Semester> Semesters { get; set; }
-        public TimetableContext()
+        public TimetableContext(DbContextOptions<TimetableContext> options) : base(options)
         {
             //Database.EnsureDeleted();   // удаляем бд со старой схемой
             //Database.EnsureCreated();   // создаем бд с новой схемой
             //    Database.EnsureCreated();
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-B9763I0\SQL_EXPRESS;Database=Timetable;Trusted_Connection=True;");
-        }
+        
 
     }
 }

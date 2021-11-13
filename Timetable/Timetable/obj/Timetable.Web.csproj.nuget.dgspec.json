@@ -72,12 +72,12 @@
         }
       }
     },
-    "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Infrastructure\\Timetable.Infrastructure.csproj": {
+    "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Infrastructure\\Timetable.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Infrastructure\\Timetable.Infrastructure.csproj",
-        "projectName": "Timetable.Infrastructure",
-        "projectPath": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Infrastructure\\Timetable.Infrastructure.csproj",
+        "projectUniqueName": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Infrastructure\\Timetable.DataAccess.csproj",
+        "projectName": "Timetable.DataAccess",
+        "projectPath": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Infrastructure\\Timetable.DataAccess.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
         "outputPath": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
@@ -187,8 +187,8 @@
               "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Core\\Timetable.Core.csproj": {
                 "projectPath": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Core\\Timetable.Core.csproj"
               },
-              "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Infrastructure\\Timetable.Infrastructure.csproj": {
-                "projectPath": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Infrastructure\\Timetable.Infrastructure.csproj"
+              "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Infrastructure\\Timetable.DataAccess.csproj": {
+                "projectPath": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Infrastructure\\Timetable.DataAccess.csproj"
               }
             }
           }

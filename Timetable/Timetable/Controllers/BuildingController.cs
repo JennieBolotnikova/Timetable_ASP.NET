@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Timetable.Infrastructure;
-using Timetable.Core.Entities;
+using TimetableApp.DataAccess;
+using TimetableApp.DataAccess.Entities;
 
-namespace Timetable.Controllers
+namespace TimetableApp.Controllers
 {
     public class BuildingController : Controller
     {

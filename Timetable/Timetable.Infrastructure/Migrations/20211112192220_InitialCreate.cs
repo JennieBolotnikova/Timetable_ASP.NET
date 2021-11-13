@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Timetable.Infrastructure.Migrations
+namespace TimetableApp.DataAccess.Migrations
 {
     public partial class InitialCreate : Migration
     {

@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Timetable.Models;
+using TimetableApp.Models;
 
-namespace Timetable.Controllers
+namespace TimetableApp.Controllers
 {
     public class HomeController : Controller
     {

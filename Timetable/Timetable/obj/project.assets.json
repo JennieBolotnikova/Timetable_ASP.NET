@@ -1520,7 +1520,7 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Timetable.Core/1.0.0": {
+      "TimetableApp.DataAccess/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
@@ -1528,25 +1528,10 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11"
         },
         "compile": {
-          "bin/placeholder/Timetable.Core.dll": {}
+          "bin/placeholder/TimetableApp.DataAccess.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Timetable.Core.dll": {}
-        }
-      },
-      "Timetable.Infrastructure/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "5.0.11",
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
-          "Timetable.Core": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Timetable.Infrastructure.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Timetable.Infrastructure.dll": {}
+          "bin/placeholder/TimetableApp.DataAccess.dll": {}
         }
       }
     }
@@ -5817,15 +5802,10 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "Timetable.Core/1.0.0": {
+    "TimetableApp.DataAccess/1.0.0": {
       "type": "project",
-      "path": "../Timetable.Core/Timetable.Core.csproj",
-      "msbuildProject": "../Timetable.Core/Timetable.Core.csproj"
-    },
-    "Timetable.Infrastructure/1.0.0": {
-      "type": "project",
-      "path": "../Timetable.Infrastructure/Timetable.Infrastructure.csproj",
-      "msbuildProject": "../Timetable.Infrastructure/Timetable.Infrastructure.csproj"
+      "path": "../Timetable.Infrastructure/TimetableApp.DataAccess.csproj",
+      "msbuildProject": "../Timetable.Infrastructure/TimetableApp.DataAccess.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5833,8 +5813,7 @@
       "Microsoft.EntityFrameworkCore >= 5.0.11",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.11",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.10",
-      "Timetable.Core >= 1.0.0",
-      "Timetable.Infrastructure >= 1.0.0"
+      "TimetableApp.DataAccess >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5844,9 +5823,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable\\Timetable.Web.csproj",
-      "projectName": "Timetable.Web",
-      "projectPath": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable\\Timetable.Web.csproj",
+      "projectUniqueName": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable\\TimetableApp.Web.csproj",
+      "projectName": "TimetableApp.Web",
+      "projectPath": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable\\TimetableApp.Web.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
       "outputPath": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable\\obj\\",
       "projectStyle": "PackageReference",
@@ -5869,11 +5848,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Core\\Timetable.Core.csproj": {
-              "projectPath": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Core\\Timetable.Core.csproj"
-            },
-            "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Infrastructure\\Timetable.Infrastructure.csproj": {
-              "projectPath": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Infrastructure\\Timetable.Infrastructure.csproj"
+            "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Infrastructure\\TimetableApp.DataAccess.csproj": {
+              "projectPath": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Infrastructure\\TimetableApp.DataAccess.csproj"
             }
           }
         }

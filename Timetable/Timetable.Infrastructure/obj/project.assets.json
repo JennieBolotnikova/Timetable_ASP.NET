@@ -1519,20 +1519,6 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "Timetable.Core/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "5.0.11",
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11"
-        },
-        "compile": {
-          "bin/placeholder/Timetable.Core.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Timetable.Core.dll": {}
-        }
       }
     }
   },
@@ -5801,11 +5787,6 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
-    },
-    "Timetable.Core/1.0.0": {
-      "type": "project",
-      "path": "../Timetable.Core/Timetable.Core.csproj",
-      "msbuildProject": "../Timetable.Core/Timetable.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5813,8 +5794,7 @@
       "Microsoft.EntityFrameworkCore >= 5.0.11",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.11",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.11",
-      "Microsoft.EntityFrameworkCore.Tools >= 5.0.11",
-      "Timetable.Core >= 1.0.0"
+      "Microsoft.EntityFrameworkCore.Tools >= 5.0.11"
     ]
   },
   "packageFolders": {
@@ -5824,9 +5804,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Infrastructure\\Timetable.Infrastructure.csproj",
-      "projectName": "Timetable.Infrastructure",
-      "projectPath": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Infrastructure\\Timetable.Infrastructure.csproj",
+      "projectUniqueName": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Infrastructure\\TimetableApp.DataAccess.csproj",
+      "projectName": "TimetableApp.DataAccess",
+      "projectPath": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Infrastructure\\TimetableApp.DataAccess.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
       "outputPath": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
@@ -5848,11 +5828,7 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {
-            "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Core\\Timetable.Core.csproj": {
-              "projectPath": "E:\\Git\\Repository\\Timetable_ASP.NET\\Timetable\\Timetable.Core\\Timetable.Core.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

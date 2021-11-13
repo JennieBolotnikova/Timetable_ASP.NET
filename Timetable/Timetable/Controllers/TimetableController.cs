@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Timetable.Infrastructure;
-using Timetable.Core.Entities;
+using TimetableApp.DataAccess;
+using TimetableApp.DataAccess.Entities;
 
-namespace Timetable.Web.Controllers
+namespace TimetableApp.Web.Controllers
 {
     public class TimetableController : Controller
     {
@@ -27,7 +27,7 @@ namespace Timetable.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(Timetable.Core.Entities.Timetable item)
+        public IActionResult Update(TimetableApp.DataAccess.Entities.Timetable item)
         {
 
             if (ModelState.IsValid)
@@ -48,7 +48,7 @@ namespace Timetable.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(Timetable.Core.Entities.Timetable item)
+        public IActionResult Delete(Timetable item)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +92,7 @@ namespace Timetable.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Timetable.Core.Entities.Timetable item)
+        public IActionResult Create(TimetableApp.DataAccess.Entities.Timetable item)
         {
 
             if (ModelState.IsValid)
@@ -106,7 +106,7 @@ namespace Timetable.Web.Controllers
                 {
 
                 }
-                return RedirectToAction("Index", "Timetable");
+                return RedirectToAction("Index", "TimetableApp");
             }
 
             return RedirectToAction("ErrorIndex", "Home");

@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Timetable.Infrastructure\TimetableApp.DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\ActivityType\" />
+    <Folder Include="Views\Bell\" />
+    <Folder Include="Views\Building\" />
+    <Folder Include="Views\Classroom\" />
+    <Folder Include="Views\ClassroomType\" />
+    <Folder Include="Views\Day\" />
+    <Folder Include="Views\Discipline\" />
+    <Folder Include="Views\Faculty\" />
+    <Folder Include="Views\Group\" />
+    <Folder Include="Views\Teacher\" />
+    <Folder Include="Views\Timetable\" />
+  </ItemGroup>
+
+</Project>
