@@ -45,11 +45,22 @@ namespace TimetableApp
             services.AddControllersWithViews();
             services.AddSession();
             //
+            services.AddScoped<IActivityTypeService, ActivityTypeService>();
+            services.AddScoped<IBellService, BellService>();
+            services.AddScoped<IBuildingService, BuildingService>();
             services.AddScoped<IClassroomsService, ClassroomsService>();
+            services.AddScoped<IClassroomTypeService, ClassroomTypeService>();
+            services.AddScoped<IDayService, DayService>();
+            services.AddScoped<IDisciplineService, DisciplineService>();
+            services.AddScoped<IFacultyService, FacultyService>();
+            services.AddScoped<IGroupService, GroupService>();
+            services.AddScoped<ISemesterService, SemesterService>();
+            services.AddScoped<ITeacherService, TeacherService>();
+            services.AddScoped<ITimetableService, TimetableService>();
             //
             services.AddScoped<IRepository<ActivityType>, ActivityTypeRepository>();
             services.AddScoped<IRepository<Bell>, BellRepository>();
-            services.AddScoped<IRepository<Bell>, BellRepository>();
+            services.AddScoped<IRepository<Building>, BuildingRepository>();
             services.AddScoped<IRepository<Classroom>, ClassroomRepository>();
             services.AddScoped<IRepository<ClassroomType>, ClassroomTypeRepository>();
             services.AddScoped<IRepository<Day>, DayRepository>();

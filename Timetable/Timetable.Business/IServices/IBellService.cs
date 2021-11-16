@@ -7,7 +7,7 @@ using TimetableApp.Business.DTO;
 
 namespace TimetableApp.Business.IServices
 {
-    public interface IBellServices
+    public interface IBellService
     {
         BellDTO GetBellById(int id);
         IReadOnlyCollection<BellDTO> GetAllBells();

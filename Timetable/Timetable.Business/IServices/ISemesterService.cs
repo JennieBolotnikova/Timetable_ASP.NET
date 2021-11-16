@@ -9,7 +9,7 @@ namespace TimetableApp.Business.IServices
 {
     public interface ISemesterService
     {
-        SemesterDTO GetSemestereById(int id);
+        SemesterDTO GetSemesterById(int id);
         IReadOnlyCollection<SemesterDTO> GetAllSemesters();
         public void CreateSemester(SemesterDTO item);
         public void UpdateSemester(SemesterDTO item);
