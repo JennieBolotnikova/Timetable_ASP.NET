@@ -8,16 +8,18 @@ namespace TimetableApp.Web.Models
 {
     public class ClassroomViewModel
     {
-        [Display(Name = "Classroom")]
+        [Display(Name = "ID")]
         public int ClassroomID { get; set; }
+
+        [Display(Name = "Номер аудитории")]
         public int ClassroomNumber { get; set; }
 
-        [Display(Name = "Classroom")]
+        [Display(Name = "Корпус")]
         public int BuildingID { get; set; }
 
-        [Display(Name = "Number of seats")]
+        [Display(Name = "Количество мест")]
         public int NumberOfSeats { get; set; }
-        [Display(Name = "Classroom Type")]
+        [Display(Name = "Тип аудитории")]
         public int ClassroomTypeID { get; set; }
     }
 }

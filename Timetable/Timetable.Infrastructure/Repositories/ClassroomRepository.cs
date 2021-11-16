@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TimetableApp.DataAccess.Interfaces;
 using TimetableApp.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
+
 namespace TimetableApp.DataAccess.Repositories
 {
     public class ClassroomRepository : IRepository<Classroom>

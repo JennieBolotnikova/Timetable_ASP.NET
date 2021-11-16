@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TimetableApp.DataAccess.Entities;
 using TimetableApp.DataAccess.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace TimetableApp.DataAccess.Repositories
 {
@@ -12,9 +13,9 @@ namespace TimetableApp.DataAccess.Repositories
     {
         private TimetableContext db;
 
-        public TeacherRepository(TimetableContext context)
+        public TeacherRepository(DbContextOptions<TimetableContext> options)
         {
-            this.db = context;
+            this.db = new TimetableContext(options);
         }
 
         public IEnumerable<Teacher> GetAll()

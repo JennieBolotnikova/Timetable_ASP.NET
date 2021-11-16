@@ -45,8 +45,18 @@ namespace TimetableApp
             services.AddControllersWithViews();
             services.AddSession();
             services.AddScoped<IClassroomsService, ClassroomsService>();
+            services.AddScoped<IRepository<ActivityType>, ActivityTypeRepository>();
+            services.AddScoped<IRepository<Bell>, BellRepository>();
+            services.AddScoped<IRepository<Bell>, BellRepository>();
             services.AddScoped<IRepository<Classroom>, ClassroomRepository>();
-          
+            services.AddScoped<IRepository<ClassroomType>, ClassroomTypeRepository>();
+            services.AddScoped<IRepository<Day>, DayRepository>();
+            services.AddScoped<IRepository<Discipline>, DisciplineRepository>();
+            services.AddScoped<IRepository<Faculty>, FacultyRepository>();
+            services.AddScoped<IRepository<Group>, GroupRepository>();
+            services.AddScoped<IRepository<Semester>, SemesterRepository>();
+            services.AddScoped<IRepository<Teacher>, TeacherRepository>();
+            services.AddScoped<IRepository<Timetable>, TimetableRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
