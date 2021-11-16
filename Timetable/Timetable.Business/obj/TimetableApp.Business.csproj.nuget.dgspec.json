@@ -47,6 +47,16 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
+            "Ninject": {
+              "target": "Package",
+              "version": "[3.3.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -106,6 +116,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.11, )"
@@ -125,6 +139,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.11, )"
+            },
+            "Ninject": {
+              "target": "Package",
+              "version": "[3.3.4, )"
             }
           },
           "imports": [

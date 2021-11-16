@@ -5,111 +5,40 @@ using System.Linq;
 using System.Threading.Tasks;
 using TimetableApp.DataAccess;
 using TimetableApp.DataAccess.Entities;
+using TimetableApp.Business.DTO;
+using TimetableApp.Business.Services;
+using TimetableApp.Business.IServices;
+using AutoMapper;
+using TimetableApp.Web.Models;
 
 namespace TimetableApp.Web.Controllers
 {
     public class ClassroomController : Controller
     {
-        private TimetableContext db;
-
-        public ClassroomController(TimetableContext context)
+        IClassroomsService _classroomsService;
+        private IMapper _mapper { get; set; }
+        public ClassroomController(IClassroomsService classroomsService, IMapper mapper)
         {
-            db = context;
-        }
-
-
-        [HttpGet]
-        public IActionResult Update(int id)
-        {
-            var item = db.Classrooms.First(x => x.ClassroomID == id);
-
-            return View(item);
-        }
-
-        [HttpPost]
-        public IActionResult Update(Classroom item)
-        {
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    db.Classrooms.Update(item);
-                    db.SaveChanges();
-                }
-                catch (Exception)
-                {
-
-                }
-                return RedirectToAction("Index");
-            }
-
-            return RedirectToAction("ErrorIndex", "Home");
-        }
-
-        [HttpPost]
-        public IActionResult Delete(Classroom item)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Classrooms.Remove(item);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult Delete(int id)
-        {
-            var mark = db.Classrooms.First(x => x.ClassroomID == id);
-            return View(mark);
-        }
-
-        [HttpPost]
-        public IActionResult Index(string search)
-        {
-            if (search == null)
-            {
-                return View(db.Classrooms.ToList());
-            }
-            var list = db.Classrooms.ToList();
-
-            return View(list);
+            _classroomsService = classroomsService;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            return View(db.Classrooms.ToList());
-        }
-
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Create(Classroom item)
-        {
-
-            if (ModelState.IsValid)
+            var classrooms = _classroomsService.GetAllClassrooms().ToList();
+            var model = new List<ClassroomViewModel>();
+            model = classrooms.Select(x => new ClassroomViewModel
             {
-                try
-                {
-                    db.Classrooms.Add(item);
-                    db.SaveChanges();
-                }
-                catch (Exception)
-                {
+                ClassroomID = x.ClassroomID,
+                ClassroomNumber = x.ClassroomNumber,
+                BuildingID = x.BuildingID,
+                NumberOfSeats = x.NumberOfSeats,
+                ClassroomTypeID = x.ClassroomTypeID,
 
-                }
-                return RedirectToAction("Index", "Classroom");
-            }
-
-            return RedirectToAction("ErrorIndex", "Home");
+            }).ToList();
+            return View(model.AsReadOnly());
         }
+
     }
 }

@@ -5,15 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="Ninject" Version="3.3.4" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Timetable.Business\TimetableApp.Business.csproj" />
     <ProjectReference Include="..\Timetable.Infrastructure\TimetableApp.DataAccess.csproj" />
   </ItemGroup>
 
@@ -21,7 +25,6 @@
     <Folder Include="Views\ActivityType\" />
     <Folder Include="Views\Bell\" />
     <Folder Include="Views\Building\" />
-    <Folder Include="Views\Classroom\" />
     <Folder Include="Views\ClassroomType\" />
     <Folder Include="Views\Day\" />
     <Folder Include="Views\Discipline\" />

@@ -45,6 +45,7 @@ namespace TimetableApp.DataAccess.Repositories
             Discipline d = db.Disciplines.Find(id);
             if (d != null)
                 db.Disciplines.Remove(d);
+            db.SaveChanges();
         }
     }
 }

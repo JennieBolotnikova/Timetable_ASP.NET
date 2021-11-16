@@ -1,6 +1,6 @@
 using System;
 
-namespace TimetableApp.Models
+namespace TimetableApp.Web
 {
     public class ErrorViewModel
     {

@@ -1,0 +1,15 @@
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable.Business\bin\Debug\net5.0\TimetableApp.Business.deps.json
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable.Business\bin\Debug\net5.0\TimetableApp.Business.dll
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable.Business\bin\Debug\net5.0\ref\TimetableApp.Business.dll
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable.Business\bin\Debug\net5.0\TimetableApp.Business.pdb
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable.Business\bin\Debug\net5.0\TimetableApp.DataAccess.dll
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable.Business\bin\Debug\net5.0\TimetableApp.DataAccess.pdb
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable.Business\obj\Debug\net5.0\TimetableApp.Business.csproj.AssemblyReference.cache
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable.Business\obj\Debug\net5.0\TimetableApp.Business.GeneratedMSBuildEditorConfig.editorconfig
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable.Business\obj\Debug\net5.0\TimetableApp.Business.AssemblyInfoInputs.cache
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable.Business\obj\Debug\net5.0\TimetableApp.Business.AssemblyInfo.cs
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable.Business\obj\Debug\net5.0\TimetableApp.Business.csproj.CoreCompileInputs.cache
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable.Business\obj\Debug\net5.0\TimetableApp.Business.csproj.CopyComplete
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable.Business\obj\Debug\net5.0\TimetableApp.Business.dll
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable.Business\obj\Debug\net5.0\ref\TimetableApp.Business.dll
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable.Business\obj\Debug\net5.0\TimetableApp.Business.pdb
