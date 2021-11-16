@@ -44,7 +44,9 @@ namespace TimetableApp
 
             services.AddControllersWithViews();
             services.AddSession();
+            //
             services.AddScoped<IClassroomsService, ClassroomsService>();
+            //
             services.AddScoped<IRepository<ActivityType>, ActivityTypeRepository>();
             services.AddScoped<IRepository<Bell>, BellRepository>();
             services.AddScoped<IRepository<Bell>, BellRepository>();

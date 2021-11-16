@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TimetableApp.Business.DTO;
-using TimetableApp.DataAccess.Entities;
+
+
 namespace TimetableApp.Business.IServices
 {
     public interface IClassroomsService
