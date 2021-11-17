@@ -5,111 +5,35 @@ using System.Linq;
 using System.Threading.Tasks;
 using TimetableApp.DataAccess;
 using TimetableApp.DataAccess.Entities;
+using TimetableApp.Business.IServices;
+using AutoMapper;
+using TimetableApp.Web.Models;
 
 namespace TimetableApp.Web.Controllers
 {
     public class DayController : Controller
     {
-        private TimetableContext db;
-
-        public DayController(TimetableContext context)
+        IDayService _dayService;
+        private IMapper _mapper { get; set; }
+        public DayController(IDayService dayService, IMapper mapper)
         {
-            db = context;
+            _dayService = dayService;
+            _mapper = mapper;
         }
 
 
         [HttpGet]
-        public IActionResult Update(int id)
+        public IActionResult Index(int id)
         {
-            var item = db.Days.First(x => x.DayID == id);
-
-            return View(item);
-        }
-
-        [HttpPost]
-        public IActionResult Update(Day item)
-        {
-
-            if (ModelState.IsValid)
+            var day = _dayService.GetAllDays().ToList();
+            var model = new List<DayViewModel>();
+            model = day.Select(x => new DayViewModel
             {
-                try
-                {
-                    db.Days.Update(item);
-                    db.SaveChanges();
-                }
-                catch (Exception)
-                {
-
-                }
-                return RedirectToAction("Index");
-            }
-
-            return RedirectToAction("ErrorIndex", "Home");
-        }
-
-        [HttpPost]
-        public IActionResult Delete(Day item)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Days.Remove(item);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult Delete(int id)
-        {
-            var mark = db.Days.First(x => x.DayID == id);
-            return View(mark);
-        }
-
-        [HttpPost]
-        public IActionResult Index(string search)
-        {
-            if (search == null)
-            {
-                return View(db.Days.ToList());
-            }
-            var list = db.Days.ToList();
-
-            return View(list);
-        }
-
-        [HttpGet]
-        public IActionResult Index()
-        {
-            return View(db.Days.ToList());
-        }
-
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Create(Day item)
-        {
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    db.Days.Add(item);
-                    db.SaveChanges();
-                }
-                catch (Exception)
-                {
-
-                }
-                return RedirectToAction("Index", "Day");
-            }
-
-            return RedirectToAction("ErrorIndex", "Home");
+                DayID = x.DayID,
+                DayName = x.DayName,
+                DayShortName = x.DayShortName,
+            }).ToList();
+            return View(model.AsReadOnly());
         }
     }
 }

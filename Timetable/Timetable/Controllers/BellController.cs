@@ -5,111 +5,35 @@ using System.Linq;
 using System.Threading.Tasks;
 using TimetableApp.DataAccess;
 using TimetableApp.DataAccess.Entities;
+using TimetableApp.Business.IServices;
+using AutoMapper;
+using TimetableApp.Web.Models;
 
 namespace TimetableApp.Web.Controllers
 {
     public class BellController : Controller
     {
-        private TimetableContext db;
-
-        public BellController(TimetableContext context)
+        IBellService _bellTypeService;
+        private IMapper _mapper { get; set; }
+        public BellController(IBellService bellTypeService, IMapper mapper)
         {
-            db = context;
+            _bellTypeService = bellTypeService;
+            _mapper = mapper;
         }
 
 
         [HttpGet]
-        public IActionResult Update(int id)
+        public IActionResult Index(int id)
         {
-            var item = db.Bells.First(x => x.BellID == id);
-
-            return View(item);
-        }
-
-        [HttpPost]
-        public IActionResult Update(Bell item)
-        {
-
-            if (ModelState.IsValid)
+            var bells = _bellTypeService.GetAllBells().ToList();
+            var model = new List<BellViewModel>();
+            model = bells.Select(x => new BellViewModel
             {
-                try
-                {
-                    db.Bells.Update(item);
-                    db.SaveChanges();
-                }
-                catch (Exception)
-                {
-
-                }
-                return RedirectToAction("Index");
-            }
-
-            return RedirectToAction("ErrorIndex", "Home");
-        }
-
-        [HttpPost]
-        public IActionResult Delete(Bell item)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Bells.Remove(item);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult Delete(int id)
-        {
-            var mark = db.Bells.First(x => x.BellID == id);
-            return View(mark);
-        }
-
-        [HttpPost]
-        public IActionResult Index(string search)
-        {
-            if (search == null)
-            {
-                return View(db.Bells.ToList());
-            }
-            var list = db.Bells.ToList();
-
-            return View(list);
-        }
-
-        [HttpGet]
-        public IActionResult Index()
-        {
-            return View(db.Bells.ToList());
-        }
-
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Create(Bell item)
-        {
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    db.Bells.Add(item);
-                    db.SaveChanges();
-                }
-                catch (Exception)
-                {
-
-                }
-                return RedirectToAction("Index", "Bell");
-            }
-
-            return RedirectToAction("ErrorIndex", "Home");
+                BellID = x.BellID,
+                LessonStartTime = x.LessonStartTime,
+                LessonEndTime = x.LessonEndTime,
+            }).ToList();
+            return View(model.AsReadOnly());
         }
     }
 }

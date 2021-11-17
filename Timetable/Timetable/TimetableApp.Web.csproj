@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\ActivityType\" />
     <Folder Include="Views\Bell\" />
     <Folder Include="Views\Building\" />
     <Folder Include="Views\ClassroomType\" />

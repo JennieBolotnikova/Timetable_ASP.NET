@@ -3,113 +3,34 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TimetableApp.DataAccess;
-using TimetableApp.DataAccess.Entities;
+using TimetableApp.Business.IServices;
+using AutoMapper;
+using TimetableApp.Web.Models;
 
 namespace TimetableApp.Web.Controllers
 {
     public class FacultyController : Controller
     {
-        private TimetableContext db;
-
-        public FacultyController(TimetableContext context)
+        IFacultyService _facultyService;
+        private IMapper _mapper { get; set; }
+        public FacultyController(IFacultyService facultyService, IMapper mapper)
         {
-            db = context;
+            _facultyService = facultyService;
+            _mapper = mapper;
         }
 
 
         [HttpGet]
-        public IActionResult Update(int id)
+        public IActionResult Index(int id)
         {
-            var item = db.Faculties.First(x => x.FacultyID == id);
-
-            return View(item);
-        }
-
-        [HttpPost]
-        public IActionResult Update(Faculty item)
-        {
-
-            if (ModelState.IsValid)
+            var faculty = _facultyService.GetAllFaculties().ToList();
+            var model = new List<FacultyViewModel>();
+            model = faculty.Select(x => new FacultyViewModel
             {
-                try
-                {
-                    db.Faculties.Update(item);
-                    db.SaveChanges();
-                }
-                catch (Exception)
-                {
-
-                }
-                return RedirectToAction("Index");
-            }
-
-            return RedirectToAction("ErrorIndex", "Home");
-        }
-
-        [HttpPost]
-        public IActionResult Delete(Faculty item)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Faculties.Remove(item);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult Delete(int id)
-        {
-            var mark = db.Faculties.First(x => x.FacultyID == id);
-            return View(mark);
-        }
-
-        [HttpPost]
-        public IActionResult Index(string search)
-        {
-            if (search == null)
-            {
-                return View(db.Faculties.ToList());
-            }
-            var list = db.Faculties.ToList();
-
-            return View(list);
-        }
-
-        [HttpGet]
-        public IActionResult Index()
-        {
-            return View(db.Faculties.ToList());
-        }
-
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Create(Faculty item)
-        {
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    db.Faculties.Add(item);
-                    db.SaveChanges();
-                }
-                catch (Exception)
-                {
-
-                }
-                return RedirectToAction("Index", "Faculty");
-            }
-
-            return RedirectToAction("ErrorIndex", "Home");
+                FacultyID = x.FacultyID,
+                FacultyName = x.FacultyName,
+            }).ToList();
+            return View(model.AsReadOnly());
         }
     }
 }

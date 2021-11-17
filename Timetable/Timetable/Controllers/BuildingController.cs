@@ -5,111 +5,34 @@ using System.Linq;
 using System.Threading.Tasks;
 using TimetableApp.DataAccess;
 using TimetableApp.DataAccess.Entities;
+using TimetableApp.Business.IServices;
+using AutoMapper;
+using TimetableApp.Web.Models;
 
 namespace TimetableApp.Controllers
 {
     public class BuildingController : Controller
     {
-        private TimetableContext db;
-
-        public BuildingController(TimetableContext context)
+        IBuildingService _buildingService;
+        private IMapper _mapper { get; set; }
+        public BuildingController(IBuildingService buildingService, IMapper mapper)
         {
-            db = context;
+            _buildingService = buildingService;
+            _mapper = mapper;
         }
 
 
         [HttpGet]
-        public IActionResult Update(int id)
+        public IActionResult Index(int id)
         {
-            var item = db.Buildings.First(x => x.BuildingID == id);
-
-            return View(item);
-        }
-
-        [HttpPost]
-        public IActionResult Update(Building item)
-        {
-
-            if (ModelState.IsValid)
+            var b = _buildingService.GetAllBuildings().ToList();
+            var model = new List<BuildingViewModel>();
+            model = b.Select(x => new BuildingViewModel
             {
-                try
-                {
-                    db.Buildings.Update(item);
-                    db.SaveChanges();
-                }
-                catch (Exception)
-                {
-
-                }
-                return RedirectToAction("Index");
-            }
-
-            return RedirectToAction("ErrorIndex", "Home");
-        }
-
-        [HttpPost]
-        public IActionResult Delete(Building item)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Buildings.Remove(item);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult Delete(int id)
-        {
-            var mark = db.Buildings.First(x => x.BuildingID == id);
-            return View(mark);
-        }
-
-        [HttpPost]
-        public IActionResult Index(string search)
-        {
-            if (search == null)
-            {
-                return View(db.Buildings.ToList());
-            }
-            var list = db.Buildings.ToList();
-
-            return View(list);
-        }
-
-        [HttpGet]
-        public IActionResult Index()
-        {
-            return View(db.Buildings.ToList());
-        }
-
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Create(Building item)
-        {
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    db.Buildings.Add(item);
-                    db.SaveChanges();
-                }
-                catch (Exception)
-                {
-
-                }
-                return RedirectToAction("Index", "Building");
-            }
-
-            return RedirectToAction("ErrorIndex", "Home");
+                BuildingID = x.BuildingID,
+                BuildingName = x.BuildingName,
+            }).ToList();
+            return View(model.AsReadOnly());
         }
     }
 }

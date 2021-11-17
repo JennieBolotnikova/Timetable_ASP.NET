@@ -3,113 +3,34 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TimetableApp.DataAccess;
-using TimetableApp.DataAccess.Entities;
+using TimetableApp.Business.IServices;
+using AutoMapper;
+using TimetableApp.Web.Models;
 
 namespace TimetableApp.Web.Controllers
 {
     public class DisciplineController : Controller
     {
-        private TimetableContext db;
-
-        public DisciplineController(TimetableContext context)
+        IDisciplineService _disciplineService;
+        private IMapper _mapper { get; set; }
+        public DisciplineController(IDisciplineService disciplineService, IMapper mapper)
         {
-            db = context;
+            _disciplineService = disciplineService;
+            _mapper = mapper;
         }
 
 
         [HttpGet]
-        public IActionResult Update(int id)
+        public IActionResult Index(int id)
         {
-            var item = db.Disciplines.First(x => x.DisciplineID == id);
-
-            return View(item);
-        }
-
-        [HttpPost]
-        public IActionResult Update(Discipline item)
-        {
-
-            if (ModelState.IsValid)
+            var discipline = _disciplineService.GetAllDisciplines().ToList();
+            var model = new List<DisciplineViewModel>();
+            model = discipline.Select(x => new DisciplineViewModel
             {
-                try
-                {
-                    db.Disciplines.Update(item);
-                    db.SaveChanges();
-                }
-                catch (Exception)
-                {
-
-                }
-                return RedirectToAction("Index");
-            }
-
-            return RedirectToAction("ErrorIndex", "Home");
-        }
-
-        [HttpPost]
-        public IActionResult Delete(Discipline item)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Disciplines.Remove(item);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult Delete(int id)
-        {
-            var mark = db.Disciplines.First(x => x.DisciplineID == id);
-            return View(mark);
-        }
-
-        [HttpPost]
-        public IActionResult Index(string search)
-        {
-            if (search == null)
-            {
-                return View(db.Disciplines.ToList());
-            }
-            var list = db.Disciplines.ToList();
-
-            return View(list);
-        }
-
-        [HttpGet]
-        public IActionResult Index()
-        {
-            return View(db.Disciplines.ToList());
-        }
-
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Create(Discipline item)
-        {
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    db.Disciplines.Add(item);
-                    db.SaveChanges();
-                }
-                catch (Exception)
-                {
-
-                }
-                return RedirectToAction("Index", "Discipline");
-            }
-
-            return RedirectToAction("ErrorIndex", "Home");
+                DisciplineID = x.DisciplineID,
+                DisciplineNmae = x.DisciplineNmae,
+            }).ToList();
+            return View(model.AsReadOnly());
         }
     }
 }
