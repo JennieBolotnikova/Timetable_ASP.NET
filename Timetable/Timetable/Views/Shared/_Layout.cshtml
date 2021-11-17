@@ -10,24 +10,49 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Timetable</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Classroom" asp-action="Index">Аудитории</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ActivityType" asp-action="Index">Виды занятий</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown" >             
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Timetable</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-center">
+                        <ul class="navbar-nav flex-grow-1 pull-sm-right">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Classroom" asp-action="Index">Аудитории</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="ActivityType" asp-action="Index">Виды занятий</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Day" asp-action="Index">Учебные дни</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="ClassroomType" asp-action="Index">Типы аудиторий</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Building" asp-action="Index">Корпуса</a>
+                            </li>
+                            <li class="nav-item">                              
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Dropdown link
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Timetable" asp-action="Index">Расписание</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Bell" asp-action="Index">Расписание звонков</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Bell" asp-action="Index">Расписание звонков</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Discipline" asp-action="Index">Учебные дисциплины</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Faculty" asp-action="Index">Факультеты</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Group" asp-action="Index">Группы</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="Index">Преподаватели</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+            </div>              
         </nav>
     </header>
     <div class="container">

@@ -21,16 +21,4 @@
     <ProjectReference Include="..\Timetable.Infrastructure\TimetableApp.DataAccess.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Bell\" />
-    <Folder Include="Views\Building\" />
-    <Folder Include="Views\ClassroomType\" />
-    <Folder Include="Views\Day\" />
-    <Folder Include="Views\Discipline\" />
-    <Folder Include="Views\Faculty\" />
-    <Folder Include="Views\Group\" />
-    <Folder Include="Views\Teacher\" />
-    <Folder Include="Views\Timetable\" />
-  </ItemGroup>
-
 </Project>

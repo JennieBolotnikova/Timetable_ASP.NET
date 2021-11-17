@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TimetableApp.Web.Models.FacultyViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div>
+                <form asp-controller="Faculty" asp-action="Index" method="post">
+                    <p>
+                        <input type="text" name="search" />
+                        <input type="submit" value="Поиск" class="searchButton" />
+                    </p>
+                </form>
+                <div>
+                    <a asp-controller="Faculty" asp-action="Create" class="btn createButton">
+                        <span>Добавить аудиоторию</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FacultyID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FacultyName)
+                    </th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.FacultyID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.FacultyName)
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
