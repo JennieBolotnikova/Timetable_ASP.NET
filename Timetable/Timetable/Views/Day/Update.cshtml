@@ -1,0 +1,33 @@
+﻿@model TimetableApp.Web.Models.DayViewModel
+
+@{ ViewData["Title"] = "Обновление"; }
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="Update" asp-route-id="@Model.DayID">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DayName" class="control-label"></label>
+                <input asp-for="DayName" class="form-control" />
+                <span asp-validation-for="DayName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DayShortName" class="control-label"></label>
+                <input asp-for="DayShortName" class="form-control" />
+                <span asp-validation-for="DayShortName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

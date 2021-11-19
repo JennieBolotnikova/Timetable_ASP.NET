@@ -36,6 +36,7 @@ namespace TimetableApp.DataAccess.Repositories
         public void Update(Discipline d)
         {
             db.Disciplines.Update(d);
+            db.SaveChanges();
         }
         public IEnumerable<Discipline> Find(Func<Discipline, Boolean> predicate)
         {

@@ -36,6 +36,7 @@ namespace TimetableApp.DataAccess.Repositories
         public void Update(Building building)
         {
             db.Buildings.Update(building);
+            db.SaveChanges();
         }
         public IEnumerable<Building> Find(Func<Building, Boolean> predicate)
         {
@@ -47,6 +48,7 @@ namespace TimetableApp.DataAccess.Repositories
             Building building = db.Buildings.Find(id);
             if (building != null)
                 db.Buildings.Remove(building);
+            db.SaveChanges();
         }
     }
 }

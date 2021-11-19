@@ -1,0 +1,19 @@
+﻿@model TimetableApp.Web.Models.ActivityTypeViewModel
+@{ ViewBag.Title = ""; }
+
+<h3>Are you sure you want to <strong>delete this activity type</strong>?</h3>
+
+<div class="alert alert-secondary" role="alert">
+    <p><strong>@Html.LabelFor(e => e.ActivityTypeName): </strong>@Model.ActivityTypeName</p>
+    <p><strong>@Html.LabelFor(e => e.ActivityTypesShortName): </strong>@Model.ActivityTypesShortName</p>
+</div>
+<div>
+    @Html.ActionLink("Delete", "ConfirmDelete", "ActivityType", new { id = Model.ActivityTypeID, }, new { @class = "btn btn-outline-danger" })
+</div>
+<br />
+<div>
+    <a asp-action="Index">Назад</a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

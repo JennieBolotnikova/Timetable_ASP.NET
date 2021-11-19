@@ -55,5 +55,43 @@ namespace TimetableApp.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
+        public ActionResult Update(int id)
+        {
+            var model = _mapper.Map<BuildingViewModel>(_buildingService.GetBuildingById(id));
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(BuildingViewModel model)
+        {
+            if (model != null && ModelState.IsValid)
+            {
+                _buildingService.UpdateBuilding(_mapper.Map<BuildingDTO>(model));
+
+                return RedirectToAction("Index", "Building", null);
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var model = _mapper.Map<BuildingViewModel>(_buildingService.GetBuildingById(id));
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult ConfirmDelete(int id)
+        {
+            var model = _mapper.Map<BuildingViewModel>(_buildingService.GetBuildingById(id));
+            _buildingService.DeleteBuilding(id);
+
+            return RedirectToAction("Index", "Building", null);
+        }
     }
 }

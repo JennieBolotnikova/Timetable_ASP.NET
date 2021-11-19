@@ -15,7 +15,7 @@
                 </form>
                 <div>
                     <a asp-controller="Timetable" asp-action="Create" class="btn createButton">
-                        <span>Добавить аудиоторию</span>
+                        <span>Добавить запись</span>
                     </a>
                 </div>
             </div>
@@ -88,6 +88,10 @@
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.SemesterID)
+                    </th>
+                    <th>
+                        <a asp-action="Update" asp-controller="Timetable" asp-route-id="@item.ID" class="editLabel">Редактирование</a>
+                        <a asp-action="Delete" asp-controller="Timetable" asp-route-id="@item.ID" class="deleteLabel">Удаление</a>
                     </th>
             }
                 </tbody>

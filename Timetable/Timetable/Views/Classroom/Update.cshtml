@@ -1,0 +1,43 @@
+﻿@model TimetableApp.Web.Models.ClassroomViewModel
+
+@{ ViewData["Title"] = "Обновление"; }
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="Update" asp-route-id="@Model.ClassroomID">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ClassroomNumber" class="control-label"></label>
+                <input asp-for="ClassroomNumber" class="form-control" />
+                <span asp-validation-for="ClassroomNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuildingID" class="control-label"></label>
+                <input asp-for="BuildingID" class="form-control" />
+                <span asp-validation-for="BuildingID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfSeats" class="control-label"></label>
+                <input asp-for="NumberOfSeats" class="form-control" />
+                <span asp-validation-for="NumberOfSeats" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassroomTypeID" class="control-label"></label>
+                <input asp-for="ClassroomTypeID" class="form-control" />
+                <span asp-validation-for="ClassroomTypeID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

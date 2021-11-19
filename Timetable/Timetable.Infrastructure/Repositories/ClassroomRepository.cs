@@ -36,6 +36,7 @@ namespace TimetableApp.DataAccess.Repositories
         public void Update(Classroom classroom)
         {
             db.Classrooms.Update(classroom);
+            db.SaveChanges();
         }
         public IEnumerable<Classroom> Find(Func<Classroom, Boolean> predicate)
         {
@@ -47,6 +48,7 @@ namespace TimetableApp.DataAccess.Repositories
             Classroom classroom = db.Classrooms.Find(id);
             if (classroom != null)
                 db.Classrooms.Remove(classroom);
+            db.SaveChanges();
         }
     }
 }

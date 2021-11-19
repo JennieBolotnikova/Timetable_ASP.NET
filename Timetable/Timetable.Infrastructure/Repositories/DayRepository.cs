@@ -36,6 +36,7 @@ namespace TimetableApp.DataAccess.Repositories
         public void Update(Day day)
         {
             db.Days.Update(day);
+            db.SaveChanges();
         }
         public IEnumerable<Day> Find(Func<Day, Boolean> predicate)
         {
@@ -47,6 +48,7 @@ namespace TimetableApp.DataAccess.Repositories
             Day day = db.Days.Find(id);
             if (day != null)
                 db.Days.Remove(day);
+            db.SaveChanges();
         }
     }
 }

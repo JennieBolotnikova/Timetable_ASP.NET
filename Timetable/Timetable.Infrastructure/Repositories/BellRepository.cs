@@ -36,6 +36,7 @@ namespace TimetableApp.DataAccess.Repositories
         public void Update(Bell bell)
         {
             db.Bells.Update(bell);
+            db.SaveChanges();
         }
         public IEnumerable<Bell> Find(Func<Bell, Boolean> predicate)
         {
@@ -47,6 +48,7 @@ namespace TimetableApp.DataAccess.Repositories
             Bell bell = db.Bells.Find(id);
             if (bell != null)
                 db.Bells.Remove(bell);
+            db.SaveChanges();
         }
     }
 }

@@ -15,7 +15,7 @@
                 </form>
                 <div>
                     <a asp-controller="Group" asp-action="Create" class="btn createButton">
-                        <span>Добавить аудиоторию</span>
+                        <span>Добавить запись</span>
                     </a>
                 </div>
             </div>
@@ -44,21 +44,25 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <th>
+                    <td>
                         @Html.DisplayNameFor(model => model.GroupID)
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                         @Html.DisplayNameFor(model => model.GroupName)
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                         @Html.DisplayNameFor(model => model.GroupNumber)
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                         @Html.DisplayNameFor(model => model.FacultyID)
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                         @Html.DisplayNameFor(model => model.NumberOfStudents)
-                    </th>
+                    </td>
+                    <td>
+                        <a asp-action="Update" asp-controller="Group" asp-route-id="@item.FacultyID" class="editLabel">Редактирование</a>
+                        <a asp-action="Delete" asp-controller="Group" asp-route-id="@item.FacultyID" class="deleteLabel">Удаление</a>
+                    </td>
                 }
                 </tbody>
             </table>

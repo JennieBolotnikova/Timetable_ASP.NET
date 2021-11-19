@@ -48,10 +48,48 @@ namespace TimetableApp.Web.Controllers
             {
                 _teacherService.CreateTeacher(_mapper.Map<TeacherDTO>(model));
 
-                return RedirectToAction("Index", "Bell", null);
+                return RedirectToAction("Index", "Teacher", null);
             }
 
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Update(int id)
+        {
+            var model = _mapper.Map<TeacherViewModel>(_teacherService.GetTeacherById(id));
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(TeacherViewModel model)
+        {
+            if (model != null && ModelState.IsValid)
+            {
+                _teacherService.UpdateTeacher(_mapper.Map<TeacherDTO>(model));
+
+                return RedirectToAction("Index", "Teacher", null);
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var model = _mapper.Map<TeacherViewModel>(_teacherService.GetTeacherById(id));
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult ConfirmDelete(int id)
+        {
+            var model = _mapper.Map<TeacherViewModel>(_teacherService.GetTeacherById(id));
+            _teacherService.DeleteTeacher(id);
+
+            return RedirectToAction("Index", "Teacher", null);
         }
     }
 }

@@ -36,6 +36,7 @@ namespace TimetableApp.DataAccess.Repositories
         public void Update(ActivityType newType)
         {
             db.ActivityTypes.Update(newType);
+            db.SaveChanges();
         }
         public IEnumerable<ActivityType> Find(Func<ActivityType, Boolean> predicate)
         {
@@ -47,6 +48,7 @@ namespace TimetableApp.DataAccess.Repositories
             ActivityType activityType = db.ActivityTypes.Find(id);
             if (activityType != null)
                 db.ActivityTypes.Remove(activityType);
+            db.SaveChanges(); 
         }
     }
 }

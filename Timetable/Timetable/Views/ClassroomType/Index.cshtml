@@ -15,7 +15,7 @@
                 </form>
                 <div>
                     <a asp-controller="ClassroomType" asp-action="Create" class="btn createButton">
-                        <span>Добавить аудиоторию</span>
+                        <span>Добавить запись</span>
                     </a>
                 </div>
             </div>
@@ -43,6 +43,8 @@
                             @Html.DisplayFor(model => item.СlassroomTypeName)
                         </td>
                         <td>
+                            <a asp-action="Update" asp-controller="СlassroomType" asp-route-id="@item.ClassroomTypeID" class="editLabel">Редактирование</a>
+                            <a asp-action="Delete" asp-controller="СlassroomType" asp-route-id="@item.ClassroomTypeID" class="deleteLabel">Удаление</a>
                         </td>
                     </tr>
                 }

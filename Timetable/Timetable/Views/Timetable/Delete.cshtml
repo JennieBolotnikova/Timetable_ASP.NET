@@ -1,0 +1,26 @@
+﻿@model TimetableApp.Web.Models.TimetableViewModel
+@{ ViewBag.Title = ""; }
+
+<h3>Are you sure you want to <strong>delete this lesson</strong>?</h3>
+
+<div class="alert alert-secondary" role="alert">
+    <p><strong>@Html.LabelFor(e => e.Date): </strong>@Model.Date</p>
+    <p><strong>@Html.LabelFor(e => e.DayID): </strong>@Model.DayID</p>
+    <p><strong>@Html.LabelFor(e => e.LessonID): </strong>@Model.LessonID</p>
+    <p><strong>@Html.LabelFor(e => e.ActivityTypeID): </strong>@Model.ActivityTypeID</p>
+    <p><strong>@Html.LabelFor(e => e.GroupID): </strong>@Model.GroupID</p>
+    <p><strong>@Html.LabelFor(e => e.TeacherID): </strong>@Model.TeacherID</p>
+    <p><strong>@Html.LabelFor(e => e.ClassroomID): </strong>@Model.ClassroomID</p>
+    <p><strong>@Html.LabelFor(e => e.SemesterID): </strong>@Model.SemesterID</p>
+</div>
+<div>
+    @Html.ActionLink("Delete", "ConfirmDelete", "Timetable", new { id = Model.ID, }, new { @class = "btn btn-outline-danger" })
+</div>
+<br />
+<div>
+    <a asp-action="Index">Назад</a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+}

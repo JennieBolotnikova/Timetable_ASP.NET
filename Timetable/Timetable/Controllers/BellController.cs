@@ -56,5 +56,43 @@ namespace TimetableApp.Web.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
+        public ActionResult Update(int id)
+        {
+            var model = _mapper.Map<BellViewModel>(_bellTypeService.GetBellById(id));
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(BellViewModel model)
+        {
+            if (model != null && ModelState.IsValid)
+            {
+                _bellTypeService.UpdateBell(_mapper.Map<BellDTO>(model));
+
+                return RedirectToAction("Index", "Bell", null);
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var model = _mapper.Map<BellViewModel>(_bellTypeService.GetBellById(id));
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult ConfirmDelete(int id)
+        {
+            var model = _mapper.Map<BellViewModel>(_bellTypeService.GetBellById(id));
+            _bellTypeService.DeleteBell(id);
+
+            return RedirectToAction("Index", "Bell", null);
+        }
     }
 }

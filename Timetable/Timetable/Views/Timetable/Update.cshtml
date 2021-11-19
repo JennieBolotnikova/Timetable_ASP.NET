@@ -1,0 +1,68 @@
+﻿@model TimetableApp.Web.Models.TimetableViewModel
+@{ ViewData["Title"] = "Обновление"; }
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="Update" asp-route-id="@Model.ID">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DayID" class="control-label"></label>
+                <input asp-for="DayID" class="form-control" />
+                <span asp-validation-for="DayID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LessonID" class="control-label"></label>
+                <input asp-for="LessonID" class="form-control" />
+                <span asp-validation-for="LessonID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DisciplineID" class="control-label"></label>
+                <input asp-for="DisciplineID" class="form-control" />
+                <span asp-validation-for="DisciplineID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActivityTypeID" class="control-label"></label>
+                <input asp-for="ActivityTypeID" class="form-control" />
+                <span asp-validation-for="ActivityTypeID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GroupID" class="control-label"></label>
+                <input asp-for="GroupID" class="form-control" />
+                <span asp-validation-for="GroupID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeacherID" class="control-label"></label>
+                <input asp-for="TeacherID" class="form-control" />
+                <span asp-validation-for="TeacherID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassroomID" class="control-label"></label>
+                <input asp-for="ClassroomID" class="form-control" />
+                <span asp-validation-for="ClassroomID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SemesterID" class="control-label"></label>
+                <input asp-for="SemesterID" class="form-control" />
+                <span asp-validation-for="SemesterID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

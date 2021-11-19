@@ -1,0 +1,33 @@
+﻿@model TimetableApp.Web.Models.SemesterViewModel
+
+@{ ViewData["Title"] = "Обновление"; }
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="Update" asp-route-id="@Model.SemesterID">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SemesterNumber" class="control-label"></label>
+                <input asp-for="SemesterNumber" class="form-control" />
+                <span asp-validation-for="SemesterNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SemesterTitle" class="control-label"></label>
+                <input asp-for="SemesterTitle" class="form-control" />
+                <span asp-validation-for="SemesterTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

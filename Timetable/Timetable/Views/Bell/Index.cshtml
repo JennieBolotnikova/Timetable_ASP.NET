@@ -15,7 +15,7 @@
                 </form>
                 <div>
                     <a asp-controller="Bell" asp-action="Create" class="btn createButton">
-                        <span>Добавить аудиоторию</span>
+                        <span>Добавить запись</span>
                     </a>
                 </div>
             </div>
@@ -38,20 +38,22 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(model => item.BellID)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => item.LessonStartTime)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => item.LessonEndTime)
-                        </td>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.BellID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.LessonStartTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.LessonEndTime)
+                    </td>
+                    <td>
+                        <a asp-action="Update" asp-controller="Bell" asp-route-id="@item.BellID" class="editLabel">Редактирование</a>
+                        <a asp-action="Delete" asp-controller="Bell" asp-route-id="@item.BellID" class="deleteLabel">Удаление</a>
 
-                        <td>
-                        </td>
-                    </tr>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
