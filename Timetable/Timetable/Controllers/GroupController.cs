@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TimetableApp.Business.IServices;
 using AutoMapper;
 using TimetableApp.Web.Models;
+using TimetableApp.Business.DTO;
 
 namespace TimetableApp.Web.Controllers
 {
@@ -35,6 +36,26 @@ namespace TimetableApp.Web.Controllers
    
             }).ToList();
             return View(model.AsReadOnly());
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(GroupViewModel model)
+        {
+            if (model != null && ModelState.IsValid)
+            {
+                _groupService.CreateGroup(_mapper.Map<GroupDTO>(model));
+
+                return RedirectToAction("Index", "Group", null);
+            }
+
+            return View(model);
         }
     }
 }

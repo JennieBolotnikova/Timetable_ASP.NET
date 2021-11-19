@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TimetableApp.Business.IServices;
 using AutoMapper;
 using TimetableApp.Web.Models;
+using TimetableApp.Business.DTO;
 
 namespace TimetableApp.Web.Controllers
 {
@@ -31,6 +32,27 @@ namespace TimetableApp.Web.Controllers
                 DisciplineNmae = x.DisciplineNmae,
             }).ToList();
             return View(model.AsReadOnly());
+        }
+
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(DisciplineViewModel model)
+        {
+            if (model != null && ModelState.IsValid)
+            {
+                _disciplineService.CreateDiscipline(_mapper.Map<DisciplineDTO>(model));
+
+                return RedirectToAction("Index", "Discipline", null);
+            }
+
+            return View(model);
         }
     }
 }

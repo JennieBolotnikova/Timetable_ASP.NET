@@ -31,6 +31,7 @@ namespace TimetableApp.DataAccess.Repositories
         public void Create(Day day)
         {
             db.Days.Add(day);
+            db.SaveChanges();
         }
         public void Update(Day day)
         {

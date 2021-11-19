@@ -31,6 +31,7 @@ namespace TimetableApp.DataAccess.Repositories
         public void Create(Classroom classroom)
         {
             db.Classrooms.Add(classroom);
+            db.SaveChanges();
         }
         public void Update(Classroom classroom)
         {

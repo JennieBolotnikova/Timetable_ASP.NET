@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TimetableApp.Business.IServices;
 using AutoMapper;
 using TimetableApp.Web.Models;
+using TimetableApp.Business.DTO;
 
 namespace TimetableApp.Web.Controllers
 {
@@ -32,6 +33,25 @@ namespace TimetableApp.Web.Controllers
 
             }).ToList();
             return View(model.AsReadOnly());
+        }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(TeacherViewModel model)
+        {
+            if (model != null && ModelState.IsValid)
+            {
+                _teacherService.CreateTeacher(_mapper.Map<TeacherDTO>(model));
+
+                return RedirectToAction("Index", "Bell", null);
+            }
+
+            return View(model);
         }
     }
 }

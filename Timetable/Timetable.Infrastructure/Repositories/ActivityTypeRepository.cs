@@ -31,6 +31,7 @@ namespace TimetableApp.DataAccess.Repositories
         public void Create(ActivityType newType)
         {
             db.ActivityTypes.Add(newType);
+            db.SaveChanges();
         }
         public void Update(ActivityType newType)
         {

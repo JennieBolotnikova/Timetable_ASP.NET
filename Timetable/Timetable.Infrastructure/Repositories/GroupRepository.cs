@@ -26,11 +26,13 @@ namespace TimetableApp.DataAccess.Repositories
         public Group Get(int id)
         {
             return db.Groups.Find(id);
+
         }
 
         public void Create(Group group)
         {
             db.Groups.Add(group);
+            db.SaveChanges();
         }
         public void Update(Group group)
         {

@@ -40,5 +40,25 @@ namespace TimetableApp.Web.Controllers
             return View(model.AsReadOnly());
         }
 
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(ClassroomViewModel model)
+        {
+            if (model != null && ModelState.IsValid)
+            {
+                _classroomsService.CreateClassroom(_mapper.Map<ClassroomDTO>(model));
+
+                return RedirectToAction("Index", "Classroom", null);
+            }
+
+            return View(model);
+        }
+
     }
 }

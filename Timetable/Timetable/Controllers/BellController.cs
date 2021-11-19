@@ -8,6 +8,7 @@ using TimetableApp.DataAccess.Entities;
 using TimetableApp.Business.IServices;
 using AutoMapper;
 using TimetableApp.Web.Models;
+using TimetableApp.Business.DTO;
 
 namespace TimetableApp.Web.Controllers
 {
@@ -34,6 +35,26 @@ namespace TimetableApp.Web.Controllers
                 LessonEndTime = x.LessonEndTime,
             }).ToList();
             return View(model.AsReadOnly());
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(BellViewModel model)
+        {
+            if (model != null && ModelState.IsValid)
+            {
+                _bellTypeService.CreateBell(_mapper.Map<BellDTO>(model));
+
+                return RedirectToAction("Index", "Bell", null);
+            }
+
+            return View(model);
         }
     }
 }

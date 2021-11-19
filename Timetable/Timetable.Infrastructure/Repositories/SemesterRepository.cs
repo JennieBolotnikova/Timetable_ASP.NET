@@ -31,6 +31,7 @@ namespace TimetableApp.DataAccess.Repositories
         public void Create(Semester semester)
         {
             db.Semesters.Add(semester);
+            db.SaveChanges();
         }
         public void Update(Semester semester)
         {

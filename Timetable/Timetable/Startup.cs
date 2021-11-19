@@ -16,6 +16,8 @@ using TimetableApp.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using TimetableApp.Business.Mapper;
+using TimetableApp.Web.Mapper;
+
 namespace TimetableApp
 {
     public class Startup
@@ -36,7 +38,8 @@ namespace TimetableApp
             // Auto Mapper Configurations
             var mapperConfig = new MapperConfiguration(mc =>
             {
-                 mc.AddProfile(new BusinessLogicMapperProfile());
+                mc.AddProfile(new BusinessLogicMapperProfile());
+                mc.AddProfile(new WebUIMapperProfile());
              });
 
             IMapper mapper = mapperConfig.CreateMapper();
@@ -44,6 +47,7 @@ namespace TimetableApp
 
             services.AddControllersWithViews();
             services.AddSession();
+
             //
             services.AddScoped<IActivityTypeService, ActivityTypeService>();
             services.AddScoped<IBellService, BellService>();

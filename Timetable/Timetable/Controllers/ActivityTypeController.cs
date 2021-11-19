@@ -8,6 +8,7 @@ using TimetableApp.DataAccess.Entities;
 using TimetableApp.Business.IServices;
 using AutoMapper;
 using TimetableApp.Web.Models;
+using TimetableApp.Business.DTO;
 
 namespace TimetableApp.Web.Controllers
 {
@@ -36,6 +37,27 @@ namespace TimetableApp.Web.Controllers
             return View(model.AsReadOnly());
         }
 
-       
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(ActivityTypeViewModel model)
+        {
+            if (model != null && ModelState.IsValid)
+            {
+                _activityTypeService.CreateActivityType(_mapper.Map<ActivityTypeDTO>(model));
+
+                return RedirectToAction("Index", "ActivityType", null);
+            }
+
+            return View(model);
+        }
+
+
+
     }
 }

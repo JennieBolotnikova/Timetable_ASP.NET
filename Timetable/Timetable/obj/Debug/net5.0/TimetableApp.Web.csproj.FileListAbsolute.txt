@@ -161,3 +161,16 @@ E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\obj\Debug\net5.0\Razor\V
 E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\obj\Debug\net5.0\Razor\Views\Group\Index.cshtml.g.cs
 E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\obj\Debug\net5.0\Razor\Views\Teacher\Index.cshtml.g.cs
 E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\obj\Debug\net5.0\Razor\Views\Timetable\Index.cshtml.g.cs
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\obj\Debug\net5.0\Razor\Views\ActivityType\Create.cshtml.g.cs
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\obj\Debug\net5.0\Razor\Views\Bell\Create.cshtml.g.cs
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\obj\Debug\net5.0\Razor\Views\Building\Create.cshtml.g.cs
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\obj\Debug\net5.0\Razor\Views\ClassroomType\Create.cshtml.g.cs
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\obj\Debug\net5.0\Razor\Views\Day\Create.cshtml.g.cs
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\obj\Debug\net5.0\Razor\Views\Discipline\Create.cshtml.g.cs
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\obj\Debug\net5.0\Razor\Views\Faculty\Create.cshtml.g.cs
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\obj\Debug\net5.0\Razor\Views\Semester\Create.cshtml.g.cs
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\obj\Debug\net5.0\Razor\Views\Semester\Index.cshtml.g.cs
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\obj\Debug\net5.0\Razor\Views\Teacher\Create.cshtml.g.cs
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\obj\Debug\net5.0\Razor\Views\Classroom\Create.cshtml.g.cs
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\obj\Debug\net5.0\Razor\Views\Group\Create.cshtml.g.cs
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\obj\Debug\net5.0\Razor\Views\Timetable\Create.cshtml.g.cs

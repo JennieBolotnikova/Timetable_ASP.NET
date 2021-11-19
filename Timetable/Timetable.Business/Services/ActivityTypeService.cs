@@ -34,10 +34,10 @@ namespace TimetableApp.Business.Services
         public ActivityTypeDTO GetActivityTypeById(int id)
         {
             if (id == null)
-                throw new ValidationException("Не установлено id телефона", "");
+                throw new ValidationException("", "");
             var response = _activityTypeRepository.Get(id);
             if (response == null)
-                throw new ValidationException("Телефон не найден", "");
+                throw new ValidationException("", "");
             return _mapper.Map<ActivityTypeDTO>(response);
         }
 

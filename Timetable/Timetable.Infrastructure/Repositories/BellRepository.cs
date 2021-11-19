@@ -31,6 +31,7 @@ namespace TimetableApp.DataAccess.Repositories
         public void Create(Bell bell)
         {
             db.Bells.Add(bell);
+            db.SaveChanges();
         }
         public void Update(Bell bell)
         {

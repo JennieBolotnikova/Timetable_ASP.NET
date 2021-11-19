@@ -13,6 +13,7 @@ namespace TimetableApp.Business.Mapper
     {
         public BusinessLogicMapperProfile()
         {
+            CreateMap<ActivityType, ActivityTypeDTO>().ReverseMap();
             CreateMap<Classroom, ClassroomDTO>().ReverseMap();
         }
         

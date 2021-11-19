@@ -31,6 +31,7 @@ namespace TimetableApp.DataAccess.Repositories
         public void Create(Timetable timetable)
         {
             db.Timetables.Add(timetable);
+            db.SaveChanges();
         }
         public void Update(Timetable timetable)
         {

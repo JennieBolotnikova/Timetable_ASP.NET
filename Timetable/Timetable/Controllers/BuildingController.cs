@@ -8,6 +8,7 @@ using TimetableApp.DataAccess.Entities;
 using TimetableApp.Business.IServices;
 using AutoMapper;
 using TimetableApp.Web.Models;
+using TimetableApp.Business.DTO;
 
 namespace TimetableApp.Controllers
 {
@@ -33,6 +34,26 @@ namespace TimetableApp.Controllers
                 BuildingName = x.BuildingName,
             }).ToList();
             return View(model.AsReadOnly());
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(BuildingViewModel model)
+        {
+            if (model != null && ModelState.IsValid)
+            {
+                _buildingService.CreateBuilding(_mapper.Map<BuildingDTO>(model));
+
+                return RedirectToAction("Index", "Building", null);
+            }
+
+            return View(model);
         }
     }
 }
