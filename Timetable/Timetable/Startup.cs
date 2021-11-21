@@ -17,6 +17,7 @@ using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using TimetableApp.Business.Mapper;
 using TimetableApp.Web.Mapper;
+using TimetableApp.DataAccess.Middleware;
 
 namespace TimetableApp
 {
@@ -90,9 +91,10 @@ namespace TimetableApp
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthorization();
-
+            // добавляем компонент middleware по инициализации базы данных и производим инициализацию базы
+            //app.UseDbInitializer();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

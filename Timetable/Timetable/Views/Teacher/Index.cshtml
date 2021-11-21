@@ -35,16 +35,19 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.TeacherID)
+                        @Html.DisplayFor(model => item.TeacherID)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.TeacherName)
+                        @Html.DisplayFor(model => item.TeacherName)
                     </th>
                     <th>
                         <a asp-action="Update" asp-controller="Teacher" asp-route-id="@item.TeacherID" class="editLabel">Редактирование</a>
                         <a asp-action="Delete" asp-controller="Teacher" asp-route-id="@item.TeacherID" class="deleteLabel">Удаление</a>
                     </th>
+                </tr>
+                    
             }
                 </tbody>
             </table>

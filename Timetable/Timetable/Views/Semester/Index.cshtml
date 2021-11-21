@@ -40,13 +40,13 @@
                 {
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.SemesterID)
+                        @Html.DisplayFor(model => item.SemesterID)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.SemesterNumber)
+                        @Html.DisplayFor(model => item.SemesterNumber)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.SemesterTitle)
+                        @Html.DisplayFor(model => item.SemesterTitle)
                     </th>
                     <th>
                         <a asp-action="Update" asp-controller="Semester" asp-route-id="@item.SemesterID" class="editLabel">Редактирование</a>

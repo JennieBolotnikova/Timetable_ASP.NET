@@ -44,25 +44,28 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <td>
-                        @Html.DisplayNameFor(model => model.GroupID)
-                    </td>
-                    <td>
-                        @Html.DisplayNameFor(model => model.GroupName)
-                    </td>
-                    <td>
-                        @Html.DisplayNameFor(model => model.GroupNumber)
-                    </td>
-                    <td>
-                        @Html.DisplayNameFor(model => model.FacultyID)
-                    </td>
-                    <td>
-                        @Html.DisplayNameFor(model => model.NumberOfStudents)
-                    </td>
-                    <td>
-                        <a asp-action="Update" asp-controller="Group" asp-route-id="@item.FacultyID" class="editLabel">Редактирование</a>
-                        <a asp-action="Delete" asp-controller="Group" asp-route-id="@item.FacultyID" class="deleteLabel">Удаление</a>
-                    </td>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.GroupID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.GroupName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.GroupNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.FacultyID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.NumberOfStudents)
+                        </td>
+                        <td>
+                            <a asp-action="Update" asp-controller="Group" asp-route-id="@item.FacultyID" class="editLabel">Редактирование</a>
+                            <a asp-action="Delete" asp-controller="Group" asp-route-id="@item.FacultyID" class="deleteLabel">Удаление</a>
+                        </td>
+                    </tr>
+                    
                 }
                 </tbody>
             </table>
