@@ -20,12 +20,12 @@ namespace TimetableApp.DataAccess.Repositories
 
         public IEnumerable<Group> GetAll()
         {
-            return db.Groups;
+            return db.Groups.Include(f => f.Faculty).AsEnumerable() ;
         }
 
         public Group Get(int id)
         {
-            return db.Groups.Find(id);
+            return db.Groups.Include(f => f.Faculty).First(g => g.GroupID == id);
 
         }
 
@@ -37,6 +37,7 @@ namespace TimetableApp.DataAccess.Repositories
         public void Update(Group group)
         {
             db.Groups.Update(group);
+            db.SaveChanges();
         }
         public IEnumerable<Group> Find(Func<Group, Boolean> predicate)
         {

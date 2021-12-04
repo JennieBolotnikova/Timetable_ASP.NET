@@ -13,9 +13,9 @@
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DayID" class="control-label"></label>
-                <input asp-for="DayID" class="form-control" />
-                <span asp-validation-for="DayID" class="text-danger"></span>
+                <label asp-for="Day" class="control-label"></label>
+                <select asp-for="Day" asp-items="ViewBag.Day"></select>
+                <span asp-validation-for="Day" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LessonID" class="control-label"></label>
@@ -23,34 +23,34 @@
                 <span asp-validation-for="LessonID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DisciplineID" class="control-label"></label>
-                <input asp-for="DisciplineID" class="form-control" />
-                <span asp-validation-for="DisciplineID" class="text-danger"></span>
+                <label asp-for="Discipline" class="control-label"></label>
+                <input asp-for="Discipline" class="form-control" />
+                <span asp-validation-for="Discipline" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ActivityTypeID" class="control-label"></label>
-                <input asp-for="ActivityTypeID" class="form-control" />
-                <span asp-validation-for="ActivityTypeID" class="text-danger"></span>
+                <label asp-for="ActivityType" class="control-label"></label>
+                <input asp-for="ActivityType" class="form-control" />
+                <span asp-validation-for="ActivityType" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="GroupID" class="control-label"></label>
-                <input asp-for="GroupID" class="form-control" />
-                <span asp-validation-for="GroupID" class="text-danger"></span>
+                <label asp-for="Group" class="control-label"></label>
+                <input asp-for="Group" class="form-control" />
+                <span asp-validation-for="Group" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TeacherID" class="control-label"></label>
-                <input asp-for="TeacherID" class="form-control" />
-                <span asp-validation-for="TeacherID" class="text-danger"></span>
+                <label asp-for="Teacher" class="control-label"></label>
+                <input asp-for="Teacher" class="form-control" />
+                <span asp-validation-for="Teacher" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ClassroomID" class="control-label"></label>
-                <input asp-for="ClassroomID" class="form-control" />
-                <span asp-validation-for="ClassroomID" class="text-danger"></span>
+                <label asp-for="Classroom" class="control-label"></label>
+                <input asp-for="Classroom" class="form-control" />
+                <span asp-validation-for="Classroom" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SemesterID" class="control-label"></label>
-                <input asp-for="SemesterID" class="form-control" />
-                <span asp-validation-for="SemesterID" class="text-danger"></span>
+                <label asp-for="Semester" class="control-label"></label>
+                <input asp-for="Semester" class="form-control" />
+                <span asp-validation-for="Semester" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Добавить" class="btn btn-primary" />

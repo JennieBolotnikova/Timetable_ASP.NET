@@ -20,12 +20,12 @@ namespace TimetableApp.DataAccess.Repositories
 
         public IEnumerable<Classroom> GetAll()
         {
-            return db.Classrooms;
+            return db.Classrooms.Include(c => c.ClassroomType).Include(b => b.Building).AsEnumerable() ;
         }
 
         public Classroom Get(int id)
         {
-            return db.Classrooms.Find(id);
+            return db.Classrooms.Include(c => c.ClassroomType).Include(b => b.Building).First(c => c.ClassroomID == id) ;
         }
 
         public void Create(Classroom classroom)

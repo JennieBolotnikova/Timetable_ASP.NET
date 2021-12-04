@@ -8,10 +8,7 @@
         <div class="table-title">
             <div>
                 <form asp-controller="Faculty" asp-action="Index" method="post">
-                    <p>
-                        <input type="text" name="search" />
-                        <input type="submit" value="Поиск" class="searchButton" />
-                    </p>
+                 
                 </form>
                 <div>
                     <a asp-controller="Faculty" asp-action="Create" class="btn createButton">
@@ -23,9 +20,7 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.FacultyID)
-                    </th>
+                    
                     <th>
                         @Html.DisplayNameFor(model => model.FacultyName)
                     </th>
@@ -36,9 +31,7 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
-                            @Html.DisplayFor(model => item.FacultyID)
-                        </td>
+                        
                         <td>
                             @Html.DisplayFor(model => item.FacultyName)
                         </td>

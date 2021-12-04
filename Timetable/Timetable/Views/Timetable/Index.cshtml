@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TimetableApp.Web.Models.TimetableViewModel>
+﻿@model TimetableApp.Web.Models.PaginatedList<TimetableApp.Web.Models.TimetableViewModel>
 @{
     ViewData["Title"] = "Index";
 }
@@ -23,83 +23,105 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ID)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Date)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DayID)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.LessonID)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DisciplineID)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ActivityTypeID)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.GroupID)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.TeacherID)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ClassroomID)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.SemesterID)
-                    </th>
-                    <th>Действия</th>
+                    @foreach (var item in Model)
+                    {
+                        @if (item == Model.First())
+                        {
+                            <th>
+                                @Html.DisplayNameFor(model => item.Date)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => item.Day)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => item.LessonID)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => item.Discipline)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => item.ActivityType)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => item.Group)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => item.Teacher)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => item.Classroom)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => item.Semester)
+                            </th>
+                            <th>Действия</th>
+                        }
+
+                    }
+
+
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                <tr>
-                    <th>
-                        @Html.DisplayFor(model => item.ID)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(model => item.Date)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(model => item.DayID)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(model => item.LessonID)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(model => item.DisciplineID)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(model => item.ActivityTypeID)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(model => item.GroupID)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(model => item.TeacherID)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(model => item.ClassroomID)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(model => item.SemesterID)
-                    </th>
-                    <th>
-                        <a asp-action="Update" asp-controller="Timetable" asp-route-id="@item.ID" class="editLabel">Редактирование</a>
-                        <a asp-action="Delete" asp-controller="Timetable" asp-route-id="@item.ID" class="deleteLabel">Удаление</a>
-                    </th>
-                </tr>
-                    
-            }
-                </tbody>
-            </table>
-        </div>
+                    <tr>
+
+                        <th>
+                            @Html.DisplayFor(model => item.Date)
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => item.Day)
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => item.LessonID)
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => item.Discipline)
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => item.ActivityType)
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => item.Group)
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => item.Teacher)
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => item.Classroom)
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => item.Semester)
+                        </th>
+                        <th>
+                            <a asp-action="Update" asp-controller="Timetable" asp-route-id="@item.ID" class="editLabel">Редактирование</a>
+                            <a asp-action="Delete" asp-controller="Timetable" asp-route-id="@item.ID" class="deleteLabel">Удаление</a>
+                        </th>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+        @{
+            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+        }
+        <a asp-action="Index"
+   
+           asp-route-pageNumber="@(Model.PageIndex - 1)"
+           
+           class="btn btn-default @prevDisabled">
+            Previous
+        </a>
+        <a asp-action="Index"
+
+           asp-route-pageNumber="@(Model.PageIndex + 1)"
+        
+           class="btn btn-default @nextDisabled">
+            Next
+        </a>
+    </div>
     </div>
 
 

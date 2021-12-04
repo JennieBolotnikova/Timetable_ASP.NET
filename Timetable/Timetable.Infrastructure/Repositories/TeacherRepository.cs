@@ -36,6 +36,7 @@ namespace TimetableApp.DataAccess.Repositories
         public void Update(Teacher teacher)
         {
             db.Teachers.Update(teacher);
+            db.SaveChanges();
         }
         public IEnumerable<Teacher> Find(Func<Teacher, Boolean> predicate)
         {

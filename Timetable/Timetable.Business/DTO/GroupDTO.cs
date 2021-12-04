@@ -15,5 +15,7 @@ namespace TimetableApp.Business.DTO
         public int FacultyID { get; set; }
         public int NumberOfStudents { get; set; }
 
+        public FacultyDTO Faculty { get; set; }
+
     }
 }

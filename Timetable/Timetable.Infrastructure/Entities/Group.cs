@@ -15,5 +15,7 @@ namespace TimetableApp.DataAccess.Entities
         public int FacultyID { get; set; }
         public int NumberOfStudents { get; set; }
 
+        public Faculty Faculty { get; set; }
+
     }
 }

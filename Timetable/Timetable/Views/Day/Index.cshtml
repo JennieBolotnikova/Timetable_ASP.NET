@@ -8,10 +8,7 @@
         <div class="table-title">
             <div>
                 <form asp-controller="Day" asp-action="Index" method="post">
-                    <p>
-                        <input type="text" name="search" />
-                        <input type="submit" value="Поиск" class="searchButton" />
-                    </p>
+                    
                 </form>
                 <div>
                     <a asp-controller="Day" asp-action="Create" class="btn createButton">
@@ -23,9 +20,7 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DayID)
-                    </th>
+                    
                     <th>
                         @Html.DisplayNameFor(model => model.DayName)
                     </th>
@@ -39,9 +34,7 @@
                 @foreach (var item in Model)
                 {
                 <tr>
-                    <td>
-                        @Html.DisplayFor(model => item.DayID)
-                    </td>
+                   
                     <td>
                         @Html.DisplayFor(model => item.DayName)
                     </td>

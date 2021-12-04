@@ -10,6 +10,7 @@ using TimetableApp.Business.Services;
 using TimetableApp.Business.IServices;
 using AutoMapper;
 using TimetableApp.Web.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace TimetableApp.Web.Controllers
 {
@@ -24,20 +25,22 @@ namespace TimetableApp.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(int pageNumber)
         {
-            var classrooms = _classroomsService.GetAllClassrooms().ToList();
-            var model = new List<ClassroomViewModel>();
-            model = classrooms.Select(x => new ClassroomViewModel
+            var model = _classroomsService.GetAllClassrooms().Select(x => new ClassroomViewModel
             {
                 ClassroomID = x.ClassroomID,
                 ClassroomNumber = x.ClassroomNumber,
-                BuildingID = x.BuildingID,
+                Building = x.Building.BuildingName,
                 NumberOfSeats = x.NumberOfSeats,
-                ClassroomTypeID = x.ClassroomTypeID,
-
+                ClassroomType = x.ClassroomType.СlassroomTypeName,
             }).ToList();
-            return View(model.AsReadOnly());
+
+            int pageSize = 20;
+
+            var count = model.Count();
+            model = model.Skip((pageNumber) * pageSize).Take(pageSize).ToList();
+            return View(new PaginatedList<ClassroomViewModel>(model, count, pageNumber, pageSize));
         }
 
         [HttpGet]

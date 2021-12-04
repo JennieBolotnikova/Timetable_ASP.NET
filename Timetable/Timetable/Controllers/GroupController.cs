@@ -22,20 +22,23 @@ namespace TimetableApp.Web.Controllers
 
 
         [HttpGet]
-        public IActionResult Index(int id)
+        public IActionResult Index(int id, int pageNumber)
         {
-            var group = _groupService.GetAllGroups().ToList();
-            var model = new List<GroupViewModel>();
-            model = group.Select(x => new GroupViewModel
+            var group = _groupService.GetAllGroups().Select(x => new GroupViewModel
             {
                 GroupID = x.GroupID,
                 GroupName = x.GroupName,
                 GroupNumber = x.GroupNumber,
-                FacultyID = x.FacultyID,
+                Faculty = x.Faculty.FacultyName,
                 NumberOfStudents = x.NumberOfStudents,
    
             }).ToList();
-            return View(model.AsReadOnly());
+            int pageSize = 20;
+
+            var count = group.Count();
+            group = group.Skip((pageNumber) * pageSize).Take(pageSize).ToList();
+
+            return View(new PaginatedList<GroupViewModel>(group, count, pageNumber, pageSize));
         }
 
         [HttpGet]

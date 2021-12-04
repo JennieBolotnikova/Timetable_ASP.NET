@@ -21,4 +21,8 @@
     <ProjectReference Include="..\Timetable.Infrastructure\TimetableApp.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="TagHelpers\" />
+  </ItemGroup>
+
 </Project>

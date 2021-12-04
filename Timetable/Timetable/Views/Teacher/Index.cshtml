@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TimetableApp.Web.Models.TeacherViewModel>
+﻿@model TimetableApp.Web.Models.PaginatedList<TimetableApp.Web.Models.TeacherViewModel>
 @{
     ViewData["Title"] = "Index";
 }
@@ -23,34 +23,48 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.TeacherID)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.TeacherName)
-                    </th>
-                    <th>Действия</th>
-                </tr>
+                    @foreach (var item in Model)
+                    {
+                        @if (item == Model.First())
+                        {
+                            <th>
+                                @Html.DisplayNameFor(model => item.TeacherName)
+                            </th><th>Действия</th>
+                        }
+                    }
+                        </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                <tr>
-                    <th>
-                        @Html.DisplayFor(model => item.TeacherID)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(model => item.TeacherName)
-                    </th>
-                    <th>
-                        <a asp-action="Update" asp-controller="Teacher" asp-route-id="@item.TeacherID" class="editLabel">Редактирование</a>
-                        <a asp-action="Delete" asp-controller="Teacher" asp-route-id="@item.TeacherID" class="deleteLabel">Удаление</a>
-                    </th>
-                </tr>
-                    
-            }
-                </tbody>
-            </table>
-        </div>
+                    <tr>
+
+                        <th>
+                            @Html.DisplayFor(model => item.TeacherName)
+                        </th>
+                        <th>
+                            <a asp-action="Update" asp-controller="Teacher" asp-route-id="@item.TeacherID" class="editLabel">Редактирование</a>
+                            <a asp-action="Delete" asp-controller="Teacher" asp-route-id="@item.TeacherID" class="deleteLabel">Удаление</a>
+                        </th>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+        @{
+            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+        }
+        <a asp-action="Index"
+           asp-route-pageNumber="@(Model.PageIndex - 1)"
+           class="btn btn-default @prevDisabled">
+            Previous
+        </a>
+        <a asp-action="Index"
+           asp-route-pageNumber="@(Model.PageIndex + 1)"
+           class="btn btn-default @nextDisabled">
+            Next
+        </a>
+    </div>
     </div>
 

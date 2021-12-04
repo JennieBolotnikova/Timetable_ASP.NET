@@ -20,12 +20,17 @@ namespace TimetableApp.DataAccess.Repositories
 
         public IEnumerable<Timetable> GetAll()
         {
-            return db.Timetables;
+            return db.Timetables.Include(a => a.ActivityType).Include(b => b.Bell).Include(d => d.Discipline)
+                .Include(d => d.Day).Include(g => g.Group).ThenInclude(f => f.Faculty).Include(t => t.Teacher)
+                .Include(s => s.Semester).Include(c => c.Classroom).ThenInclude(t => t.ClassroomType).AsEnumerable();
         }
 
         public Timetable Get(int id)
         {
-            return db.Timetables.Find(id);
+            return db.Timetables.Include(a => a.ActivityType).Include(b => b.Bell).Include(d => d.Discipline)
+                .Include(d => d.Day).Include(g => g.Group).ThenInclude(f => f.Faculty).Include(t => t.Teacher)
+                .Include(s => s.Semester).Include(c => c.Classroom).ThenInclude(t => t.ClassroomType).AsEnumerable()
+                .First(t => t.ID == id);
         }
 
         public void Create(Timetable timetable)
@@ -36,6 +41,7 @@ namespace TimetableApp.DataAccess.Repositories
         public void Update(Timetable timetable)
         {
             db.Timetables.Update(timetable);
+            db.SaveChanges();
         }
         public IEnumerable<Timetable> Find(Func<Timetable, Boolean> predicate)
         {

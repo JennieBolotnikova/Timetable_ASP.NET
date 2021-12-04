@@ -22,17 +22,18 @@ namespace TimetableApp.Web.Controllers
 
 
         [HttpGet]
-        public IActionResult Index(int id)
+        public IActionResult Index(int id, int pageNumber)
         {
-            var teacher = _teacherService.GetAllTeacheres().ToList();
-            var model = new List<TeacherViewModel>();
-            model = teacher.Select(x => new TeacherViewModel
+            var teacher = _teacherService.GetAllTeacheres().Select(x => new TeacherViewModel
             {
                TeacherID = x.TeacherID,
                TeacherName = x.TeacherName,
 
             }).ToList();
-            return View(model.AsReadOnly());
+            int pageSize = 20;
+            var count = teacher.Count();
+            teacher = teacher.Skip((pageNumber) * pageSize).Take(pageSize).ToList();
+            return View(new PaginatedList<TeacherViewModel>(teacher, count, pageNumber, pageSize));
         }
         [HttpGet]
         public IActionResult Create()

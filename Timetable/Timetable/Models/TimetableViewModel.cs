@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace TimetableApp.Web.Models
 {
     public class TimetableViewModel
@@ -15,27 +16,36 @@ namespace TimetableApp.Web.Models
         public DateTime Date { get; set; }
 
         [Display(Name = "День нелели")]
-        public int DayID { get; set; }
+        public string Day { get; set; }
 
         [Display(Name = "Номер пары")]
         public int LessonID { get; set; }
 
         [Display(Name = "Дисциплина")]
-        public int DisciplineID { get; set; }
+        public string Discipline { get; set; }
 
         [Display(Name = "Вид занятости")]
-        public int ActivityTypeID { get; set; }
+        public string ActivityType { get; set; }
 
         [Display(Name = "Группа")]
-        public int GroupID { get; set; }
+        public string Group { get; set; }
 
         [Display(Name = "Преподаватель")]
-        public int TeacherID { get; set; }
+        public string Teacher { get; set; }
 
         [Display(Name = "Номер аудитории")]
-        public int ClassroomID { get; set; }
+        public int Classroom { get; set; }
 
         [Display(Name = "Семестр")]
+        public string Semester { get; set; }
+        public int DayID { get; set; }
+        public int DisciplineID { get; set; }
+        public int ActivityTypeID { get; set; }
+        public int GroupID { get; set; }
+        public int TeacherID { get; set; }
+        public int ClassroomID { get; set; }
         public int SemesterID { get; set; }
+     
+        public DayViewModel Days { get; set; }
     }
 }

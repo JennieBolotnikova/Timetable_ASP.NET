@@ -1,8 +1,10 @@
-﻿@model IEnumerable<TimetableApp.Web.Models.ClassroomViewModel>
+﻿@model TimetableApp.Web.Models.PaginatedList<TimetableApp.Web.Models.ClassroomViewModel>
+@using TimetableApp.Web.Models
 @{
     ViewData["Title"] = "Index";
 }
-
+@*подключаем все tag-хелперы*@
+@addTagHelper *, TimetableApp.Web
 <div class="container">
     <div class="table-wrapper">
         <div class="table-title">
@@ -23,31 +25,32 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ClassroomID)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ClassroomNumber)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.BuildingID)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.NumberOfSeats)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ClassroomTypeID)
-                    </th>
-                    <th>Действия</th>
+                    @foreach (var item in Model)
+                    {
+                        @if (item == Model.First())
+                        {
+                            <th>
+                                @Html.DisplayNameFor(model => item.ClassroomNumber)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => item.BuildingID)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => item.NumberOfSeats)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => item.ClassroomType)
+                            </th>
+                            <th>Действия</th>
+                        }
+                    }
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
-                            @Html.DisplayFor(model => item.ClassroomID)
-                        </td>
+
                         <td>
                             @Html.DisplayFor(model => item.ClassroomNumber)
                         </td>
@@ -58,7 +61,7 @@
                             @Html.DisplayFor(model => item.NumberOfSeats)
                         </td>
                         <td>
-                            @Html.DisplayFor(model => item.ClassroomTypeID)
+                            @Html.DisplayFor(model => item.ClassroomType)
                         </td>
                         <td>
                             <a asp-action="Update" asp-controller="Classroom" asp-route-id="@item.ClassroomID" class="editLabel">Редактирование</a>
@@ -67,7 +70,25 @@
                     </tr>
                 }
             </tbody>
+
         </table>
+        @{
+            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+        }
+        <a asp-action="Index"
+           asp-route-pageNumber="@(Model.PageIndex - 1)"
+           class="btn btn-default @prevDisabled">
+            Previous
+        </a>
+        <a asp-action="Index"
+           asp-route-pageNumber="@(Model.PageIndex + 1)"
+           class="btn btn-default @nextDisabled">
+            Next
+        </a>
     </div>
 </div>
+
+
+
 

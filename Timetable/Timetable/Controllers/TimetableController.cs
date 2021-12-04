@@ -22,25 +22,28 @@ namespace TimetableApp.Web.Controllers
 
 
         [HttpGet]
-        public IActionResult Index(int id)
+        public IActionResult Index(int id, int pageNumber)
         {
-            var teacher = _timetableService.GetAllTimetables().ToList();
-            var model = new List<TimetableViewModel>();
-            model = teacher.Select(x => new TimetableViewModel
+            var timetable = _timetableService.GetAllTimetables().Select(x => new TimetableViewModel
             {
                 ID = x.ID,
                 Date = x.Date,
-                DayID = x.DayID,
-                LessonID = x.LessonID,
-                DisciplineID = x.DisciplineID,
-                ActivityTypeID = x.ActivityTypeID,
-                GroupID = x.GroupID,
-                TeacherID = x.TeacherID,
-                ClassroomID = x.ClassroomID,
-                SemesterID = x.SemesterID,
+                Day = x.Day.DayShortName,
+                LessonID = x.BellID,
+                Discipline = x.Discipline.DisciplineNmae,
+                ActivityType = x.ActivityType.ActivityTypesShortName,
+                Group = x.Group.GroupName,
+                Teacher = x.Teacher.TeacherName,
+                Classroom = x.ClassroomID,
+                Semester = x.Semester.SemesterTitle,
 
             }).ToList();
-            return View(model.AsReadOnly());
+            int pageSize = 20;
+
+            var count = timetable.Count();
+            timetable = timetable.Skip((pageNumber) * pageSize).Take(pageSize).ToList();
+            
+            return View(new PaginatedList<TimetableViewModel>(timetable, count, pageNumber, pageSize));
         }
 
         [HttpGet]

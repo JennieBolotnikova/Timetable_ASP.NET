@@ -13,5 +13,8 @@ namespace TimetableApp.Business.DTO
         public int NumberOfSeats { get; set; }
         public int ClassroomTypeID { get; set; }
 
+        public BuildingDTO Building { get; set; }
+        public ClassroomTypeDTO ClassroomType { get; set; }
+
     }
 }

@@ -22,16 +22,21 @@ namespace TimetableApp.Web.Controllers
 
 
         [HttpGet]
-        public IActionResult Index(int id)
+        public IActionResult Index(int id, int pageNumber)
         {
-            var discipline = _disciplineService.GetAllDisciplines().ToList();
-            var model = new List<DisciplineViewModel>();
-            model = discipline.Select(x => new DisciplineViewModel
+            var discipline = _disciplineService.GetAllDisciplines().Select(x => new DisciplineViewModel
             {
                 DisciplineID = x.DisciplineID,
                 DisciplineNmae = x.DisciplineNmae,
             }).ToList();
-            return View(model.AsReadOnly());
+            int pageSize = 20;
+
+            var count = discipline.Count();
+            discipline = discipline.Skip((pageNumber) * pageSize).Take(pageSize).ToList();
+
+            return View(new PaginatedList<DisciplineViewModel>(discipline, count, pageNumber, pageSize));
+
+           
         }
 
 

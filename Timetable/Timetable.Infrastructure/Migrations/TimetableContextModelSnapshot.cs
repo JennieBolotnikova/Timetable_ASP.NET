@@ -19,7 +19,7 @@ namespace TimetableApp.DataAccess.Migrations
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Timetable.DataAccess.Entities.ActivityType", b =>
+            modelBuilder.Entity("TimetableApp.DataAccess.Entities.ActivityType", b =>
                 {
                     b.Property<int>("ActivityTypeID")
                         .ValueGeneratedOnAdd()
@@ -37,7 +37,7 @@ namespace TimetableApp.DataAccess.Migrations
                     b.ToTable("ActivityTypes");
                 });
 
-            modelBuilder.Entity("Timetable.DataAccess.Entities.Bell", b =>
+            modelBuilder.Entity("TimetableApp.DataAccess.Entities.Bell", b =>
                 {
                     b.Property<int>("BellID")
                         .ValueGeneratedOnAdd()
@@ -55,7 +55,7 @@ namespace TimetableApp.DataAccess.Migrations
                     b.ToTable("Bells");
                 });
 
-            modelBuilder.Entity("Timetable.DataAccess.Entities.Building", b =>
+            modelBuilder.Entity("TimetableApp.DataAccess.Entities.Building", b =>
                 {
                     b.Property<int>("BuildingID")
                         .ValueGeneratedOnAdd()
@@ -70,7 +70,7 @@ namespace TimetableApp.DataAccess.Migrations
                     b.ToTable("Buildings");
                 });
 
-            modelBuilder.Entity("Timetable.DataAccess.Entities.Classroom", b =>
+            modelBuilder.Entity("TimetableApp.DataAccess.Entities.Classroom", b =>
                 {
                     b.Property<int>("ClassroomID")
                         .ValueGeneratedOnAdd()
@@ -91,17 +91,21 @@ namespace TimetableApp.DataAccess.Migrations
 
                     b.HasKey("ClassroomID");
 
+                    b.HasIndex("BuildingID");
+
+                    b.HasIndex("ClassroomTypeID");
+
                     b.ToTable("Classrooms");
                 });
 
-            modelBuilder.Entity("Timetable.DataAccess.Entities.ClassroomType", b =>
+            modelBuilder.Entity("TimetableApp.DataAccess.Entities.ClassroomType", b =>
                 {
                     b.Property<int>("ClassroomTypeID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("СlassroomTypeName")
+                    b.Property<string>("ClassroomTypeName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ClassroomTypeID");
@@ -109,7 +113,7 @@ namespace TimetableApp.DataAccess.Migrations
                     b.ToTable("ClassroomTypes");
                 });
 
-            modelBuilder.Entity("Timetable.DataAccess.Entities.Day", b =>
+            modelBuilder.Entity("TimetableApp.DataAccess.Entities.Day", b =>
                 {
                     b.Property<int>("DayID")
                         .ValueGeneratedOnAdd()
@@ -127,7 +131,7 @@ namespace TimetableApp.DataAccess.Migrations
                     b.ToTable("Days");
                 });
 
-            modelBuilder.Entity("Timetable.DataAccess.Entities.Discipline", b =>
+            modelBuilder.Entity("TimetableApp.DataAccess.Entities.Discipline", b =>
                 {
                     b.Property<int>("DisciplineID")
                         .ValueGeneratedOnAdd()
@@ -142,7 +146,7 @@ namespace TimetableApp.DataAccess.Migrations
                     b.ToTable("Disciplines");
                 });
 
-            modelBuilder.Entity("Timetable.DataAccess.Entities.Faculty", b =>
+            modelBuilder.Entity("TimetableApp.DataAccess.Entities.Faculty", b =>
                 {
                     b.Property<int>("FacultyID")
                         .ValueGeneratedOnAdd()
@@ -157,7 +161,7 @@ namespace TimetableApp.DataAccess.Migrations
                     b.ToTable("Faculties");
                 });
 
-            modelBuilder.Entity("Timetable.DataAccess.Entities.Group", b =>
+            modelBuilder.Entity("TimetableApp.DataAccess.Entities.Group", b =>
                 {
                     b.Property<int>("GroupID")
                         .ValueGeneratedOnAdd()
@@ -178,10 +182,12 @@ namespace TimetableApp.DataAccess.Migrations
 
                     b.HasKey("GroupID");
 
+                    b.HasIndex("FacultyID");
+
                     b.ToTable("Groups");
                 });
 
-            modelBuilder.Entity("Timetable.DataAccess.Entities.Semester", b =>
+            modelBuilder.Entity("TimetableApp.DataAccess.Entities.Semester", b =>
                 {
                     b.Property<int>("SemesterID")
                         .ValueGeneratedOnAdd()
@@ -199,7 +205,7 @@ namespace TimetableApp.DataAccess.Migrations
                     b.ToTable("Semesters");
                 });
 
-            modelBuilder.Entity("Timetable.DataAccess.Entities.Teacher", b =>
+            modelBuilder.Entity("TimetableApp.DataAccess.Entities.Teacher", b =>
                 {
                     b.Property<int>("TeacherID")
                         .ValueGeneratedOnAdd()
@@ -214,7 +220,7 @@ namespace TimetableApp.DataAccess.Migrations
                     b.ToTable("Teachers");
                 });
 
-            modelBuilder.Entity("Timetable.DataAccess.Entities.Timetable", b =>
+            modelBuilder.Entity("TimetableApp.DataAccess.Entities.Timetable", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -222,6 +228,9 @@ namespace TimetableApp.DataAccess.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("ActivityTypeID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BellID")
                         .HasColumnType("int");
 
                     b.Property<int>("ClassroomID")
@@ -239,9 +248,6 @@ namespace TimetableApp.DataAccess.Migrations
                     b.Property<int>("GroupID")
                         .HasColumnType("int");
 
-                    b.Property<int>("LessonID")
-                        .HasColumnType("int");
-
                     b.Property<int>("SemesterID")
                         .HasColumnType("int");
 
@@ -250,7 +256,120 @@ namespace TimetableApp.DataAccess.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("ActivityTypeID");
+
+                    b.HasIndex("BellID");
+
+                    b.HasIndex("ClassroomID");
+
+                    b.HasIndex("DayID");
+
+                    b.HasIndex("DisciplineID");
+
+                    b.HasIndex("GroupID");
+
+                    b.HasIndex("SemesterID");
+
+                    b.HasIndex("TeacherID");
+
                     b.ToTable("Timetables");
+                });
+
+            modelBuilder.Entity("TimetableApp.DataAccess.Entities.Classroom", b =>
+                {
+                    b.HasOne("TimetableApp.DataAccess.Entities.Building", "Building")
+                        .WithMany()
+                        .HasForeignKey("BuildingID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TimetableApp.DataAccess.Entities.ClassroomType", "ClassroomType")
+                        .WithMany()
+                        .HasForeignKey("ClassroomTypeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Building");
+
+                    b.Navigation("ClassroomType");
+                });
+
+            modelBuilder.Entity("TimetableApp.DataAccess.Entities.Group", b =>
+                {
+                    b.HasOne("TimetableApp.DataAccess.Entities.Faculty", "Faculty")
+                        .WithMany()
+                        .HasForeignKey("FacultyID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Faculty");
+                });
+
+            modelBuilder.Entity("TimetableApp.DataAccess.Entities.Timetable", b =>
+                {
+                    b.HasOne("TimetableApp.DataAccess.Entities.ActivityType", "ActivityType")
+                        .WithMany()
+                        .HasForeignKey("ActivityTypeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TimetableApp.DataAccess.Entities.Bell", "Bell")
+                        .WithMany()
+                        .HasForeignKey("BellID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TimetableApp.DataAccess.Entities.Classroom", "Classroom")
+                        .WithMany()
+                        .HasForeignKey("ClassroomID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TimetableApp.DataAccess.Entities.Day", "Day")
+                        .WithMany()
+                        .HasForeignKey("DayID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TimetableApp.DataAccess.Entities.Discipline", "Discipline")
+                        .WithMany()
+                        .HasForeignKey("DisciplineID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TimetableApp.DataAccess.Entities.Group", "Group")
+                        .WithMany()
+                        .HasForeignKey("GroupID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TimetableApp.DataAccess.Entities.Semester", "Semester")
+                        .WithMany()
+                        .HasForeignKey("SemesterID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TimetableApp.DataAccess.Entities.Teacher", "Teacher")
+                        .WithMany()
+                        .HasForeignKey("TeacherID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ActivityType");
+
+                    b.Navigation("Bell");
+
+                    b.Navigation("Classroom");
+
+                    b.Navigation("Day");
+
+                    b.Navigation("Discipline");
+
+                    b.Navigation("Group");
+
+                    b.Navigation("Semester");
+
+                    b.Navigation("Teacher");
                 });
 #pragma warning restore 612, 618
         }
