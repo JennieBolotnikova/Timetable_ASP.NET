@@ -21,19 +21,23 @@ namespace TimetableApp.Web.Controllers
         }
 
 
-        [HttpGet]
-        public IActionResult Index(int id, int pageNumber)
+        
+        public IActionResult Index(int id, int pageNumber, string searchString)
         {
             var teacher = _teacherService.GetAllTeacheres().Select(x => new TeacherViewModel
             {
                TeacherID = x.TeacherID,
                TeacherName = x.TeacherName,
 
-            }).ToList();
+            });
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                teacher = teacher.Where(s => s.TeacherName!.Contains(searchString));
+            }
             int pageSize = 20;
             var count = teacher.Count();
             teacher = teacher.Skip((pageNumber) * pageSize).Take(pageSize).ToList();
-            return View(new PaginatedList<TeacherViewModel>(teacher, count, pageNumber, pageSize));
+            return View(new PaginatedList<TeacherViewModel>(teacher.ToList(), count, pageNumber, pageSize));
         }
         [HttpGet]
         public IActionResult Create()

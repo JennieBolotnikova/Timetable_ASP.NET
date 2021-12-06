@@ -9,7 +9,7 @@
             <div>
                 <form asp-controller="Group" asp-action="Index" method="post">
                     <p>
-                        <input type="text" name="search" />
+                        Название: <input type="text" name="searchString" />
                         <input type="submit" value="Поиск" class="searchButton" />
                     </p>
                 </form>
@@ -78,6 +78,9 @@
            asp-route-pageNumber="@(Model.PageIndex - 1)"
            class="btn btn-default @prevDisabled">
             Previous
+        </a>
+        <a>
+
         </a>
         <a asp-action="Index"
            asp-route-pageNumber="@(Model.PageIndex + 1)"

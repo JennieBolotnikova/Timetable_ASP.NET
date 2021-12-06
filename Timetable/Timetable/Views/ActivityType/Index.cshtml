@@ -8,7 +8,10 @@
         <div class="table-title">
             <div>
                 <form asp-controller="ActivityType" asp-action="Index" method="post">
-                    
+                    <p>
+                        Навзвание: <input type="text" name="searchString" />
+                        <input type="submit" value="Поиск" class="searchButton" />
+                    </p>
                 </form>
                 <div>
                     <a asp-controller="ActivityType" asp-action="Create" class="btn createButton">

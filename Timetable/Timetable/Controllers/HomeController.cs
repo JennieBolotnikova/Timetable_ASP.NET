@@ -22,5 +22,20 @@ namespace TimetableApp.Controllers
         {
             return View();
         }
+
+        public IActionResult TeacherTimetable()
+        {
+            return RedirectToAction("ByTeachers", "Timetable");
+        }
+
+        public IActionResult ClassroomTimetable()
+        {
+            return RedirectToAction("ByClassrooms", "Timetable");
+        }
+
+        public IActionResult GroupTimetable()
+        {
+            return RedirectToAction("ByGroups", "Timetable");
+        }
     }
 }

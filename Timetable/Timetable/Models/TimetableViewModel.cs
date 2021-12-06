@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace TimetableApp.Web.Models
 {
@@ -19,7 +19,7 @@ namespace TimetableApp.Web.Models
         public string Day { get; set; }
 
         [Display(Name = "Номер пары")]
-        public int LessonID { get; set; }
+        public int BellID { get; set; }
 
         [Display(Name = "Дисциплина")]
         public string Discipline { get; set; }
@@ -45,7 +45,7 @@ namespace TimetableApp.Web.Models
         public int TeacherID { get; set; }
         public int ClassroomID { get; set; }
         public int SemesterID { get; set; }
-     
-        public DayViewModel Days { get; set; }
+
+       
     }
 }

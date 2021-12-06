@@ -1,17 +1,23 @@
 ﻿@model TimetableApp.Web.Models.PaginatedList<TimetableApp.Web.Models.TimetableViewModel>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "ByClassrooms";
 }
 
 <div class="container">
     <div class="table-wrapper">
         <div class="table-title">
             <div>
-                <div>
-                    <a asp-controller="Timetable" asp-action="Create" class="btn createButton">
-                        <span>Добавить запись</span>
-                    </a>
-                </div>
+                <form asp-controller="Timetable" asp-action="ByClassrooms" method="post">
+                    <p>
+                            Номер аудитории: <input type="text" name="searchString" />
+                        <input type="submit" value="Поиск" class="searchButton" />
+                    </p>
+                </form>
+                    <div>
+                        <a asp-controller="Timetable" asp-action="Create" class="btn createButton">
+                            <span>Добавить запись</span>
+                        </a>
+                    </div>
             </div>
         </div>
         <table class="table table-hover">
@@ -21,13 +27,14 @@
                     {
                         @if (item == Model.First())
                         {
+                    <th>
+                                @Html.DisplayNameFor(model => item.Classroom)
+                            </th>
                             <th>
                                 @Html.DisplayNameFor(model => item.Date)
                             </th>
                             <th>
-                               
                                 @Html.DisplayNameFor(model => item.Day)
-                                
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => item.BellID)
@@ -44,9 +51,7 @@
                             <th>
                                 @Html.DisplayNameFor(model => item.Teacher)
                             </th>
-                            <th>
-                                @Html.DisplayNameFor(model => item.Classroom)
-                            </th>
+                            
                             <th>
                                 @Html.DisplayNameFor(model => item.Semester)
                             </th>
@@ -62,44 +67,33 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                    
                         <th>
-
-                            @Html.DisplayFor(model => item.Date)
-                      
-                            @Html.ActionLink("-", "Index", new { sortOrder = ViewBag.DaySortParm })
+                            @Html.DisplayFor(model => item.Classroom)
                         </th>
                         <th>
-
+                            @Html.DisplayFor(model => item.Date)
+                        </th>
+                        <th>
                             @Html.DisplayFor(model => item.Day)
-                            @Html.ActionLink("-", "Index", new { sortOrder = ViewBag.DateSortParm })
                         </th>
                         <th>
                             @Html.DisplayFor(model => item.BellID)
                         </th>
                         <th>
                             @Html.DisplayFor(model => item.Discipline)
-                            @Html.ActionLink("-", "Index", new { sortOrder = ViewBag.DisciplineSortParm })
                         </th>
                         <th>
                             @Html.DisplayFor(model => item.ActivityType)
-                            @Html.ActionLink("-", "Index", new { sortOrder = ViewBag.ActivityTypeSortParm })
                         </th>
                         <th>
                             @Html.DisplayFor(model => item.Group)
-                            @Html.ActionLink("-", "Index", new { sortOrder = ViewBag.GrouportParm })
                         </th>
                         <th>
                             @Html.DisplayFor(model => item.Teacher)
-                            @Html.ActionLink("-", "Index", new { sortOrder = ViewBag.TeacherSortParm })
                         </th>
-                        <th>
-                            @Html.DisplayFor(model => item.Classroom)
-                            @Html.ActionLink("-", "Index", new { sortOrder = ViewBag.ClassroomSortParm })
-                        </th>
+                        
                         <th>
                             @Html.DisplayFor(model => item.Semester)
-                            @Html.ActionLink("-", "Index", new { sortOrder = ViewBag.SemesterSortParm })
                         </th>
                         <th>
                             <a asp-action="Update" asp-controller="Timetable" asp-route-id="@item.ID" class="editLabel">Редактирование</a>
@@ -115,20 +109,16 @@
             var nextDisabled = !Model.HasNextPage ? "disabled" : "";
         }
         <a asp-action="Index"
-   
            asp-route-pageNumber="@(Model.PageIndex - 1)"
-           
            class="btn btn-default @prevDisabled">
             Previous
         </a>
         <a asp-action="Index"
-
            asp-route-pageNumber="@(Model.PageIndex + 1)"
-        
            class="btn btn-default @nextDisabled">
             Next
         </a>
     </div>
-    </div>
+</div>
 
 

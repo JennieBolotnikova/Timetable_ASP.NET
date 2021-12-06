@@ -21,8 +21,8 @@ namespace TimetableApp.Web.Controllers
         }
 
 
-        [HttpGet]
-        public IActionResult Index(int id)
+       
+        public IActionResult Index(int id, string searchString)
         {
             var faculty = _facultyService.GetAllFaculties().ToList();
             var model = new List<FacultyViewModel>();
@@ -31,6 +31,11 @@ namespace TimetableApp.Web.Controllers
                 FacultyID = x.FacultyID,
                 FacultyName = x.FacultyName,
             }).ToList();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(s => s.FacultyName!.Contains(searchString)).ToList();
+            }
             return View(model.AsReadOnly());
         }
 

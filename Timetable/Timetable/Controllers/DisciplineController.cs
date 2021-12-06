@@ -21,20 +21,25 @@ namespace TimetableApp.Web.Controllers
         }
 
 
-        [HttpGet]
-        public IActionResult Index(int id, int pageNumber)
-        {
+       
+        public IActionResult Index(int id, int pageNumber, string searchString)
+        {         
             var discipline = _disciplineService.GetAllDisciplines().Select(x => new DisciplineViewModel
             {
                 DisciplineID = x.DisciplineID,
                 DisciplineNmae = x.DisciplineNmae,
-            }).ToList();
+            });
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                discipline = discipline.Where(s => s.DisciplineNmae!.Contains(searchString));
+            }
             int pageSize = 20;
 
             var count = discipline.Count();
             discipline = discipline.Skip((pageNumber) * pageSize).Take(pageSize).ToList();
 
-            return View(new PaginatedList<DisciplineViewModel>(discipline, count, pageNumber, pageSize));
+            return View(new PaginatedList<DisciplineViewModel>(discipline.ToList(), count, pageNumber, pageSize));
 
            
         }

@@ -63,6 +63,11 @@ namespace TimetableApp.Business.Services
 
             _timetableRepository.Delete(id);
         }
+        public IReadOnlyCollection<TimetableDTO> TeachersTimetable(int teacherId)
+        {
+            return _mapper.Map <IEnumerable<TimetableDTO>>(_timetableRepository.GetAll()).Where(x => x.TeacherID == teacherId)
+                .ToList().AsReadOnly();
+        }
 
     }
 }

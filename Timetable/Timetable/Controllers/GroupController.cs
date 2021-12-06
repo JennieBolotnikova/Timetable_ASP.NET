@@ -13,16 +13,18 @@ namespace TimetableApp.Web.Controllers
     public class GroupController : Controller
     {
         IGroupService _groupService;
+        IFacultyService _facultyService;
         private IMapper _mapper { get; set; }
-        public GroupController(IGroupService facultyService, IMapper mapper)
+        public GroupController(IGroupService groupService, IFacultyService facultyService, IMapper mapper)
         {
-            _groupService = facultyService;
+            _groupService = groupService;
+            _facultyService = facultyService;
             _mapper = mapper;
         }
 
 
-        [HttpGet]
-        public IActionResult Index(int id, int pageNumber)
+      
+        public IActionResult Index(int id, int pageNumber, string searchString)
         {
             var group = _groupService.GetAllGroups().Select(x => new GroupViewModel
             {
@@ -32,33 +34,41 @@ namespace TimetableApp.Web.Controllers
                 Faculty = x.Faculty.FacultyName,
                 NumberOfStudents = x.NumberOfStudents,
    
-            }).ToList();
+            });
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                group = group.Where(s => s.GroupName!.Contains(searchString));
+            }
             int pageSize = 20;
 
             var count = group.Count();
             group = group.Skip((pageNumber) * pageSize).Take(pageSize).ToList();
 
-            return View(new PaginatedList<GroupViewModel>(group, count, pageNumber, pageSize));
+            return View(new PaginatedList<GroupViewModel>(group.ToList(), count, pageNumber, pageSize));
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            return View(new CreateGroupViewModel()
+            {
+                GroupViewModel = new GroupViewModel(),
+                Faculties = _mapper.Map<List<FacultyViewModel>>(_facultyService.GetAllFaculties()),
+                SelectedFacultyIds = new List<int>()
+            });
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(GroupViewModel model)
+        public IActionResult Create(CreateGroupViewModel model)
         {
             if (model != null && ModelState.IsValid)
             {
-                _groupService.CreateGroup(_mapper.Map<GroupDTO>(model));
-
-                return RedirectToAction("Index", "Group", null);
+                model.GroupViewModel.FacultyID = model.SelectedFacultyIds.First();
+                _groupService.CreateGroup(_mapper.Map<GroupDTO>(model.GroupViewModel));               
             }
-
-            return View(model);
+            return RedirectToAction("Index");
         }
 
         [HttpGet]

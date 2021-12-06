@@ -15,5 +15,7 @@ namespace TimetableApp.Business.IServices
         public void UpdateTimetable(TimetableDTO item);
         public void ValidateTimetable(TimetableDTO item);
         public void DeleteTimetable(int id);
+
+        public IReadOnlyCollection<TimetableDTO> TeachersTimetable(int teacherId);
     }
 }

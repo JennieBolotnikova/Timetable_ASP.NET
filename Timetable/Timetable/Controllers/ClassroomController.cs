@@ -36,6 +36,7 @@ namespace TimetableApp.Web.Controllers
                 ClassroomType = x.ClassroomType.СlassroomTypeName,
             }).ToList();
 
+
             int pageSize = 20;
 
             var count = model.Count();

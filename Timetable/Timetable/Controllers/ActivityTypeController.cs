@@ -23,18 +23,20 @@ namespace TimetableApp.Web.Controllers
         }
 
 
-        [HttpGet]
-        public IActionResult Index(int id)
+
+        public IActionResult Index(int id, string searchString)
         {
-            var activites = _activityTypeService.GetAllActivityTypes().ToList();
-            var model = new List<ActivityTypeViewModel>();
-            model = activites.Select(x => new ActivityTypeViewModel
+            var activites = _activityTypeService.GetAllActivityTypes().Select(x => new ActivityTypeViewModel
             {
                 ActivityTypeID = x.ActivityTypeID,
                 ActivityTypeName = x.ActivityTypeName,
                 ActivityTypesShortName = x.ActivityTypesShortName,
-            }).ToList();
-            return View(model.AsReadOnly());
+            });
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                activites = activites.Where(s => s.ActivityTypeName!.Contains(searchString));
+            }
+            return View(activites.ToList().AsReadOnly());
         }
 
         [HttpGet]
