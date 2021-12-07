@@ -83,11 +83,13 @@ namespace TimetableApp
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.AddEfDiagrams<TimetableContext>();
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+            
             app.UseStaticFiles();
 
             app.UseRouting();

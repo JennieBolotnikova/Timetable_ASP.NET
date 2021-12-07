@@ -14,7 +14,5 @@ namespace TimetableApp.DataAccess.Entities
         public int ClassroomTypeID { get; set; }
         public Building Building { get; set; }
         public ClassroomType ClassroomType { get; set; }
-
-
     }
 }

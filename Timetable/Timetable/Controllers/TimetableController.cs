@@ -79,19 +79,19 @@ namespace TimetableApp.Web.Controllers
                     timetable = timetable.OrderBy(s => s.Discipline);
                     break;
                 case "ActivityType":
-                    timetable = timetable.OrderBy(s => s.Day);
+                    timetable = timetable.OrderBy(s => s.ActivityType);
                     break;
                 case "Group":
-                    timetable = timetable.OrderBy(s => s.Date);
+                    timetable = timetable.OrderBy(s => s.Group);
                     break;
                 case "Teacher":
-                    timetable = timetable.OrderBy(s => s.Discipline);
+                    timetable = timetable.OrderBy(s => s.Teacher);
                     break;
                 case "Classroom":
-                    timetable = timetable.OrderBy(s => s.Date);
+                    timetable = timetable.OrderBy(s => s.Classroom);
                     break;
                 case "Semester":
-                    timetable = timetable.OrderBy(s => s.Discipline);
+                    timetable = timetable.OrderBy(s => s.Semester);
                     break;
             }
             int pageSize = 20;
@@ -197,7 +197,7 @@ namespace TimetableApp.Web.Controllers
 
             });
 
-
+            timetable = timetable.OrderBy(s => s.Teacher);
             if (!String.IsNullOrEmpty(searchString))
             {
                 timetable = timetable.Where(s => s.Teacher!.Contains(searchString));

@@ -203,3 +203,4 @@ E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\bin\Debug\net5.0\Microso
 E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\obj\Debug\net5.0\Razor\Views\Timetable\ByClassrooms.cshtml.g.cs
 E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\obj\Debug\net5.0\Razor\Views\Timetable\ByGroups.cshtml.g.cs
 E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\obj\Debug\net5.0\Razor\Views\Timetable\ByTeachers.cshtml.g.cs
+E:\Git\Repository\Timetable_ASP.NET\Timetable\Timetable\bin\Debug\net5.0\EntityFrameworkCore.Diagrams.dll
