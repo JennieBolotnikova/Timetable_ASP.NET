@@ -83,7 +83,6 @@ namespace TimetableApp
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.AddEfDiagrams<TimetableContext>();
             }
             else
             {
