@@ -75,16 +75,22 @@ namespace TimetableApp.Web.Controllers
         public ActionResult Update(int id)
         {
             var model = _mapper.Map<GroupViewModel>(_groupService.GetGroupById(id));
-            return View(model);
+            return View(new CreateGroupViewModel
+            {
+                GroupViewModel = model,
+                Faculties = _mapper.Map<List<FacultyViewModel>>(_facultyService.GetAllFaculties()),
+                SelectedFacultyIds = new List<int>() { model.FacultyID}
+            });
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Update(GroupViewModel model)
+        public ActionResult Update(CreateGroupViewModel model)
         {
             if (model != null && ModelState.IsValid)
             {
-                _groupService.UpdateGroup(_mapper.Map<GroupDTO>(model));
+                model.GroupViewModel.FacultyID = model.SelectedFacultyIds.First();
+                _groupService.UpdateGroup(_mapper.Map<GroupDTO>(model.GroupViewModel));
 
                 return RedirectToAction("Index", "Group", null);
             }

@@ -1,31 +1,32 @@
-﻿@model TimetableApp.Web.Models.ClassroomViewModel
+﻿@model TimetableApp.Web.Models.CreateClassroomViewModels
 
 @{ ViewData["Title"] = "Обновление"; }
 
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post" asp-action="Update" asp-route-id="@Model.ClassroomID">
+        <form method="post" asp-action="Update" asp-route-id="@Model.ClassroomViewModel.ClassroomID">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @Html.HiddenFor(x => x.ClassroomViewModel.ClassroomID)
             <div class="form-group">
-                <label asp-for="ClassroomNumber" class="control-label"></label>
-                <input asp-for="ClassroomNumber" class="form-control" />
-                <span asp-validation-for="ClassroomNumber" class="text-danger"></span>
+                <label asp-for="ClassroomViewModel.ClassroomNumber" class="control-label"></label>
+                <input asp-for="ClassroomViewModel.ClassroomNumber" class="form-control" />
+                <span asp-validation-for="ClassroomViewModel.ClassroomNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BuildingID" class="control-label"></label>
-                <input asp-for="BuildingID" class="form-control" />
-                <span asp-validation-for="BuildingID" class="text-danger"></span>
+                <label asp-for="ClassroomViewModel.Building" class="control-label"></label>
+                @Html.DropDownListFor(m => m.SelectedBuildingIds, new SelectList(Model.Buildings, "BuildingID", "BuildingName"))
+                <span asp-validation-for="ClassroomViewModel.BuildingID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NumberOfSeats" class="control-label"></label>
-                <input asp-for="NumberOfSeats" class="form-control" />
-                <span asp-validation-for="NumberOfSeats" class="text-danger"></span>
+                <label asp-for="ClassroomViewModel.NumberOfSeats" class="control-label"></label>
+                <input asp-for="ClassroomViewModel.NumberOfSeats" class="form-control" />
+                <span asp-validation-for="ClassroomViewModel.NumberOfSeats" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ClassroomTypeID" class="control-label"></label>
-                <input asp-for="ClassroomTypeID" class="form-control" />
-                <span asp-validation-for="ClassroomTypeID" class="text-danger"></span>
+                <label asp-for="ClassroomViewModel.ClassroomTypeID" class="control-label"></label>
+                @Html.DropDownListFor(m => m.SelectedClassroomTypeIds, new SelectList(Model.ClassroomTypes, "ClassroomTypeID", "СlassroomTypeName"))
+                <span asp-validation-for="ClassroomViewModel.ClassroomTypeID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Сохранить" class="btn btn-primary" />

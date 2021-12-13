@@ -13,6 +13,7 @@ namespace TimetableApp.DataAccess
         {
             db.Database.EnsureCreated();
             Random randObj = new Random(1);
+
             //Заполнение таблицы тип занятия
             if (!db.ActivityTypes.Any())
             {
@@ -34,7 +35,7 @@ namespace TimetableApp.DataAccess
             //Заполнение таблицы корпуса
             if (!db.Buildings.Any())
             {
-               
+
                 db.Buildings.Add(new Building { BuildingName = "Второй корпус" });
                 db.Buildings.Add(new Building { BuildingName = "Первый корпус" });
                 db.SaveChanges();
@@ -127,7 +128,7 @@ namespace TimetableApp.DataAccess
             //Заполнение таблицы семестр
             if (!db.Semesters.Any())
             {
-                
+
                 db.Semesters.Add(new Semester { SemesterNumber = 1, SemesterTitle = "Летний семестр" });
                 db.Semesters.Add(new Semester { SemesterNumber = 1, SemesterTitle = "Зимний семестр" });
                 db.SaveChanges();
@@ -135,32 +136,30 @@ namespace TimetableApp.DataAccess
             //Заполнение таблицы расписание
             if (!db.Timetables.Any())
             {
-                for (int moths = 9; moths <= 12; moths++)
-                {
-                    for (int i = 1; i <= 30; i++)
-                    {
-                        for (int lessonId = 1; lessonId <= 5; lessonId++)
-                        {
-                            db.Timetables.Add(new Timetable
-                            {
-                                Date = new DateTime(DateTime.Now.Year, moths, i),
-                                DayID = i % 5 + 1,
-                                BellID = lessonId,
-                                DisciplineID = randObj.Next(1, 1000),
-                                ActivityTypeID = randObj.Next(1, 3),
-                                GroupID = randObj.Next(1, 50),
-                                TeacherID = randObj.Next(1, 200),
-                                ClassroomID = randObj.Next(1, 155),
-                                SemesterID = 1
-                            });
-                        }
-                        db.SaveChanges();
 
+                for (int i = 1; i <= 20; i++)
+                {
+                    for (int lessonId = 1; lessonId <= 5; lessonId++)
+                    {
+                        db.Timetables.Add(new Timetable
+                        {
+                            Date = new DateTime(DateTime.Now.Year, 12, i),
+                            DayID = i % 5 + 1,
+                            BellID = lessonId,
+                            DisciplineID = randObj.Next(1, 1000),
+                            ActivityTypeID = randObj.Next(1, 3),
+                            GroupID = randObj.Next(1, 50),
+                            TeacherID = randObj.Next(1, 200),
+                            ClassroomID = randObj.Next(1, 155),
+                            SemesterID = 1
+                        });
                     }
+                    db.SaveChanges();
 
                 }
-            }
 
+
+            }
         }
 
     }

@@ -9,36 +9,11 @@ namespace TimetableApp.Web.Models
 {
     public class TimetableViewModel
     {
-        [Display(Name = "ID")]
         public int ID { get; set; }
-
         [Display(Name = "Дата")]
         public DateTime Date { get; set; }
-
-        [Display(Name = "День нелели")]
-        public string Day { get; set; }
-
-        [Display(Name = "Номер пары")]
-        public int BellID { get; set; }
-
-        [Display(Name = "Дисциплина")]
-        public string Discipline { get; set; }
-
-        [Display(Name = "Вид занятости")]
-        public string ActivityType { get; set; }
-
-        [Display(Name = "Группа")]
-        public string Group { get; set; }
-
-        [Display(Name = "Преподаватель")]
-        public string Teacher { get; set; }
-
-        [Display(Name = "Номер аудитории")]
-        public int Classroom { get; set; }
-
-        [Display(Name = "Семестр")]
-        public string Semester { get; set; }
         public int DayID { get; set; }
+        public int BellID { get; set; }
         public int DisciplineID { get; set; }
         public int ActivityTypeID { get; set; }
         public int GroupID { get; set; }
@@ -46,6 +21,23 @@ namespace TimetableApp.Web.Models
         public int ClassroomID { get; set; }
         public int SemesterID { get; set; }
 
-       
+
+        [Display(Name = "День нелели")]
+        public string Day { get; set; }
+        [Display(Name = "Начало пары")]
+        public string Bell { get; set; }
+        [Display(Name = "Дисциплина")]
+        public string Discipline { get; set; }
+        [Display(Name = "Вид занятости")]
+        public string ActivityType { get; set; }
+        [Display(Name = "Группа")]
+        public string Group { get; set; }
+        [Display(Name = "Преподаватель")]
+        public string Teacher { get; set; }
+        [Display(Name = "Номер аудитории")]
+        public string Classroom { get; set; }
+        [Display(Name = "Семестр")]
+        public string Semester { get; set; }
+
     }
 }

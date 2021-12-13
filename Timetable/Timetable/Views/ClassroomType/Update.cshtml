@@ -7,12 +7,13 @@
     <div class="col-md-4">
         <form method="post" asp-action="Update" asp-route-id="@Model.ClassroomTypeID">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @Html.HiddenFor(x => x.ClassroomTypeID)
             <div class="form-group">
                 <label asp-for="СlassroomTypeName" class="control-label"></label>
                 <input asp-for="СlassroomTypeName" class="form-control" />
                 <span asp-validation-for="СlassroomTypeName" class="text-danger"></span>
             </div>
-          
+
             <div class="form-group">
                 <input type="submit" value="Сохранить" class="btn btn-primary" />
             </div>

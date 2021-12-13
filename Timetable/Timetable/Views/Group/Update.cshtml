@@ -1,31 +1,32 @@
-﻿@model TimetableApp.Web.Models.GroupViewModel
+﻿@model TimetableApp.Web.Models.CreateGroupViewModel
 
 @{ ViewData["Title"] = "Обновление"; }
 
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form method="post" asp-action="Update" asp-route-id="@Model.GroupID">
+    <div class="col-md-4">    
+        <form method="post" asp-action="Update" asp-route-id="@Model.GroupViewModel.GroupID">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @Html.HiddenFor(x => x.GroupViewModel.GroupID)
             <div class="form-group">
-                <label asp-for="GroupName" class="control-label"></label>
-                <input asp-for="GroupName" class="form-control" />
-                <span asp-validation-for="GroupName" class="text-danger"></span>
+                <label asp-for=" GroupViewModel.GroupName" class="control-label"></label>
+                <input asp-for=" GroupViewModel.GroupName" class="form-control" />
+                <span asp-validation-for=" GroupViewModel.GroupName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="GroupNumber" class="control-label"></label>
-                <input asp-for="GroupNumber" class="form-control" />
-                <span asp-validation-for="GroupNumber" class="text-danger"></span>
+                <label asp-for=" GroupViewModel.GroupNumber" class="control-label"></label>
+                <input asp-for=" GroupViewModel.GroupNumber" class="form-control" />
+                <span asp-validation-for=" GroupViewModel.GroupNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FacultyID" class="control-label"></label>
-                <input asp-for="FacultyID" class="form-control" />
-                <span asp-validation-for="FacultyID" class="text-danger"></span>
+                <label asp-for="GroupViewModel.Faculty" class="control-label"></label>
+                @Html.DropDownListFor(m => m.SelectedFacultyIds, new SelectList(Model.Faculties, "FacultyID", "FacultyName"))
+                <span asp-validation-for="GroupViewModel.FacultyID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NumberOfStudents" class="control-label"></label>
-                <input asp-for="NumberOfStudents" class="form-control" />
-                <span asp-validation-for="NumberOfStudents" class="text-danger"></span>
+                <label asp-for=" GroupViewModel.NumberOfStudents" class="control-label"></label>
+                <input asp-for=" GroupViewModel.NumberOfStudents" class="form-control" />
+                <span asp-validation-for=" GroupViewModel.NumberOfStudents" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Сохранить" class="btn btn-primary" />
@@ -33,7 +34,6 @@
         </form>
     </div>
 </div>
-
 <div>
     <a asp-action="Index">Назад</a>
 </div>

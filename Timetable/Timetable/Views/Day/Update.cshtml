@@ -7,6 +7,7 @@
     <div class="col-md-4">
         <form method="post" asp-action="Update" asp-route-id="@Model.DayID">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @Html.HiddenFor(x => x.DayID)
             <div class="form-group">
                 <label asp-for="DayName" class="control-label"></label>
                 <input asp-for="DayName" class="form-control" />

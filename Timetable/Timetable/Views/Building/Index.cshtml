@@ -2,46 +2,48 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<div class="container">
-    <div class="table-wrapper">
-        <div class="table-title">
-            <div>
+<body style=" background-color: #E6F0FA;">
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
                 <div>
-                    <a asp-controller="Building" asp-action="Create" class="btn createButton">
-                        <span>Добавить запись</span>
-                    </a>
+                    <div>
+                        <a asp-controller="Building" asp-action="Create" class="btn btn-outline-primary">
+                            <span>Добавить запись</span>
+                        </a>
+                    </div>
+                    <br>
+                    <br>
                 </div>
             </div>
-        </div>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    
-                    <th>
-                        @Html.DisplayNameFor(model => model.BuildingName)
-                    </th>
-                    <th>Действия</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
+            <table class="table table-bordered">
+                <thead class="thead-light">
                     <tr>
-                        
-                        <td>
-                            @Html.DisplayFor(model => item.BuildingName)
-                        </td>
-                        <td>
-                            <a asp-action="Update" asp-controller="Building" asp-route-id="@item.BuildingID" class="editLabel">Редактирование</a>
-                            <a asp-action="Delete" asp-controller="Building" asp-route-id="@item.BuildingID" class="deleteLabel">Удаление</a>
 
-                        </td>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BuildingName)
+                        </th>
+                        <th>Действия</th>
                     </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</div>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
 
+                            <td>
+                                @Html.DisplayFor(model => item.BuildingName)
+                            </td>
+                            <td>
+                                <a asp-action="Update" asp-controller="Building" asp-route-id="@item.BuildingID" class="editLabel btn btn-outline-primary">Редактировать</a>
+                                <a asp-action="Delete" asp-controller="Building" asp-route-id="@item.BuildingID" class="deleteLabel btn btn-outline-danger">Удалить</a>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
 

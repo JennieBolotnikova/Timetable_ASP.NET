@@ -48,6 +48,7 @@ namespace TimetableApp.DataAccess.Repositories
             Semester semester = db.Semesters.Find(id);
             if (semester != null)
                 db.Semesters.Remove(semester);
+            db.SaveChanges();
         }
     }
 }

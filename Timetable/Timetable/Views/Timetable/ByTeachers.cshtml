@@ -11,16 +11,21 @@
                 <form asp-controller="Timetable" asp-action="ByTeachers" method="post">
                     <p>
                         ФИО преподавателя: <input type="text" name="searchString" />
+                        <label class="control-label">Семестр: </label>
+                        <input type="text" name="semester" />
+                        <label class="control-label">Год: </label>
+                        <input type="text" name="year" />
                         <input type="submit" value="Поиск" class="searchButton" />
-                    </p>
-                 
-                    
+                    </p>                   
                 </form>
+                
+                <br>
+
             </div>
         </div>
     </div>
-    <table class="table table-hover">
-        <thead>
+    <table class="table table-bordered">
+        <thead class="thead-light">
             <tr>
                 @foreach (var item in Model)
                 {
@@ -38,7 +43,7 @@
                             @Html.DisplayNameFor(model => item.Day)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => item.BellID)
+                            @Html.DisplayNameFor(model => item.Bell)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => item.Discipline)
@@ -56,7 +61,7 @@
                         <th>
                             @Html.DisplayNameFor(model => item.Semester)
                         </th>
-                        <th>Действия</th>
+                       
                     }
 
                 }
@@ -67,42 +72,39 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
+                <tr>
 
-                <th>
-                    @Html.DisplayFor(model => item.Teacher)
-                </th>
+                    <td>
+                        @Html.DisplayFor(model => item.Teacher)
+                    </td>
 
-                <th>
-                    @Html.DisplayFor(model => item.Date)
-                </th>
-                <th>
-                    @Html.DisplayFor(model => item.Day)
-                </th>
-                <th>
-                    @Html.DisplayFor(model => item.BellID)
-                </th>
-                <th>
-                    @Html.DisplayFor(model => item.Discipline)
-                </th>
-                <th>
-                    @Html.DisplayFor(model => item.ActivityType)
-                </th>
+                    <td>
+                        @Html.DisplayFor(model => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Day)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Bell)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Discipline)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.ActivityType)
+                    </td>
 
-                <th>
-                    @Html.DisplayFor(model => item.Group)
-                </th>
-                <th>
-                    @Html.DisplayFor(model => item.Classroom)
-                </th>
-                <th>
-                    @Html.DisplayFor(model => item.Semester)
-                </th>
-                <th>
-                    <a asp-action="Update" asp-controller="Timetable" asp-route-id="@item.ID" class="editLabel">Редактирование</a>
-                    <a asp-action="Delete" asp-controller="Timetable" asp-route-id="@item.ID" class="deleteLabel">Удаление</a>
-                </th>
-            </tr>
+                    <td>
+                        @Html.DisplayFor(model => item.Group)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Classroom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Semester)
+                    </td>
+                    
+                </tr>
 
             }
         </tbody>

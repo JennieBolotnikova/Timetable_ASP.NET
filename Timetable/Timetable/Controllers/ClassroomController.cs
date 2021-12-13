@@ -17,15 +17,19 @@ namespace TimetableApp.Web.Controllers
     public class ClassroomController : Controller
     {
         IClassroomsService _classroomsService;
+        IBuildingService _buildingService;
+        IClassroomTypeService _classroomTypeService;
         private IMapper _mapper { get; set; }
-        public ClassroomController(IClassroomsService classroomsService, IMapper mapper)
+        public ClassroomController(IClassroomsService classroomsService, IMapper mapper, IBuildingService buildingService, IClassroomTypeService classroomTypeService)
         {
             _classroomsService = classroomsService;
             _mapper = mapper;
+            _buildingService = buildingService;
+            _classroomTypeService = classroomTypeService;
         }
 
         [HttpGet]
-        public IActionResult Index(int pageNumber)
+        public IActionResult Index(int pageNumber, string searchString)
         {
             var model = _classroomsService.GetAllClassrooms().Select(x => new ClassroomViewModel
             {
@@ -47,16 +51,25 @@ namespace TimetableApp.Web.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            return View(new CreateClassroomViewModels()
+            {
+                ClassroomViewModel = new ClassroomViewModel(),
+                Buildings = _mapper.Map<List<BuildingViewModel>>(_buildingService.GetAllBuildings()),
+                ClassroomTypes = _mapper.Map<List<ClassroomTypeViewModel>>(_classroomTypeService.GetAllClassroomTypes()),
+                SelectedBuildingIds = new List<int>(),
+                SelectedClassroomTypeIds = new List<int>()
+            }); ; ;
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(ClassroomViewModel model)
+        public IActionResult Create(CreateClassroomViewModels model)
         {
             if (model != null && ModelState.IsValid)
             {
-                _classroomsService.CreateClassroom(_mapper.Map<ClassroomDTO>(model));
+                model.ClassroomViewModel.BuildingID = model.SelectedBuildingIds.First();
+                model.ClassroomViewModel.ClassroomTypeID = model.SelectedClassroomTypeIds.First();
+                _classroomsService.CreateClassroom(_mapper.Map<ClassroomDTO>(model.ClassroomViewModel));
 
                 return RedirectToAction("Index", "Classroom", null);
             }
@@ -68,16 +81,25 @@ namespace TimetableApp.Web.Controllers
         public ActionResult Update(int id)
         {
             var model = _mapper.Map<ClassroomViewModel>(_classroomsService.GetClassroomById(id));
-            return View(model);
+            return View(new CreateClassroomViewModels
+            {
+                ClassroomViewModel = model,
+                Buildings = _mapper.Map<List<BuildingViewModel>>(_buildingService.GetAllBuildings()),
+                ClassroomTypes = _mapper.Map<List<ClassroomTypeViewModel>>(_classroomTypeService.GetAllClassroomTypes()),
+                SelectedBuildingIds = new List<int>() { model.BuildingID },
+                SelectedClassroomTypeIds = new List<int>() { model.ClassroomTypeID}
+            });
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Update(ClassroomViewModel model)
+        public ActionResult Update(CreateClassroomViewModels model)
         {
             if (model != null && ModelState.IsValid)
             {
-                _classroomsService.UpdateClassroom(_mapper.Map<ClassroomDTO>(model));
+                model.ClassroomViewModel.BuildingID = model.SelectedBuildingIds.First();
+                model.ClassroomViewModel.ClassroomTypeID = model.SelectedClassroomTypeIds.First();
+                _classroomsService.UpdateClassroom(_mapper.Map<ClassroomDTO>(model.ClassroomViewModel));
 
                 return RedirectToAction("Index", "Classroom", null);
             }

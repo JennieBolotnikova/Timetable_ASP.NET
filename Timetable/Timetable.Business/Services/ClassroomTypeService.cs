@@ -63,7 +63,7 @@ namespace TimetableApp.Business.Services
             if (_classroomTypeRepository.Get(id) is null)
                 throw new Exception("");
 
-            _classroomTypeRepository.Delete(id);
+                _classroomTypeRepository.Delete(id);
         }
     }
 }

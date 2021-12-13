@@ -40,7 +40,7 @@ namespace TimetableApp.DataAccess.Repositories
         }
         public void Update(Timetable timetable)
         {
-            db.Timetables.Update(timetable);
+            db.Entry(timetable).State = EntityState.Modified; ;
             db.SaveChanges();
         }
         public IEnumerable<Timetable> Find(Func<Timetable, Boolean> predicate)
@@ -53,6 +53,7 @@ namespace TimetableApp.DataAccess.Repositories
             Timetable timetable = db.Timetables.Find(id);
             if (timetable != null)
                 db.Timetables.Remove(timetable);
+            db.SaveChanges();
         }
     }
 }

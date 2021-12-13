@@ -49,6 +49,7 @@ namespace TimetableApp.DataAccess.Repositories
             Group group = db.Groups.Find(id);
             if (group != null)
                 db.Groups.Remove(group);
+            db.SaveChanges();
         }
     }
 }

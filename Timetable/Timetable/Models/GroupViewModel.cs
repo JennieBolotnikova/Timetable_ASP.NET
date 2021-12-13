@@ -16,8 +16,7 @@ namespace TimetableApp.Web.Models
 
         [Display(Name = "Номер группы")]
         public int GroupNumber { get; set; }
-
-       
+    
         public int FacultyID { get; set; }
 
         [Display(Name = "Факультет")]

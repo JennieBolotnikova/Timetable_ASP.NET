@@ -24,6 +24,7 @@ namespace TimetableApp.Web.Mapper
             CreateMap<SemesterDTO, SemesterViewModel>().ReverseMap();
             CreateMap<TeacherDTO, TeacherViewModel>().ReverseMap();
             CreateMap<TimetableDTO, TimetableViewModel>().ReverseMap();
+
         }
     }
 }

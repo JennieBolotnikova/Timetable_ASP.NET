@@ -2,58 +2,60 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<div class="container">
-    <div class="table-wrapper">
-        <div class="table-title">
-            <div>
-                <form asp-controller="ActivityType" asp-action="Index" method="post">
-                    <p>
-                        Навзвание: <input type="text" name="searchString" />
-                        <input type="submit" value="Поиск" class="searchButton" />
-                    </p>
-                </form>
+<body style=" background-color: #E6F0FA;">
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
                 <div>
-                    <a asp-controller="ActivityType" asp-action="Create" class="btn createButton">
-                        <span>Добавить запись</span>
-                    </a>
+                    <form asp-controller="ActivityType" asp-action="Index" method="post">
+                        <p>
+                            Навзвание: <input type="text" name="searchString" />
+                            <input type="submit" value="Поиск" class="searchButton" />
+                        </p>
+                    </form>
+                    <div>
+                        <a asp-controller="ActivityType" asp-action="Create" class="btn btn-outline-primary" style=" background-color: white;">
+                            <span>Добавить запись</span>
+                        </a>
+                    </div>
+                    <br>
                 </div>
             </div>
+            <table class="table table-bordered" style="background-color: white; box-shadow: 10px white;">
+                <thead class="thead-light">
+                    <tr>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.ActivityTypeName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ActivityTypesShortName)
+                        </th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @Html.DisplayFor(model => item.ActivityTypeName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => item.ActivityTypesShortName)
+                            </td>
+                            <td>
+                                <a asp-action="Update" asp-controller="ActivityType" asp-route-id="@item.ActivityTypeID" class="editLabel btn btn-outline-primary">Редактировать</a>
+                                <a asp-action="Delete" asp-controller="ActivityType" asp-route-id="@item.ActivityTypeID" class="deleteLabel btn btn-outline-danger">Удалить</a>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    
-                    <th>
-                        @Html.DisplayNameFor(model => model.ActivityTypeName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ActivityTypesShortName)
-                    </th>
-                    <th>Действия</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                <tr>
-                   
-                    <td>
-                        @Html.DisplayFor(model => item.ActivityTypeName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => item.ActivityTypesShortName)
-                    </td>
-                    <td>
-                        <a asp-action="Update" asp-controller="ActivityType" asp-route-id="@item.ActivityTypeID" class="editLabel">Редактирование</a>
-                        <a asp-action="Delete" asp-controller="ActivityType" asp-route-id="@item.ActivityTypeID" class="deleteLabel">Удаление</a>
-                    
-                    </td>
-                </tr>
-                }
-            </tbody>
-        </table>
     </div>
-</div>
+</body>
 
 

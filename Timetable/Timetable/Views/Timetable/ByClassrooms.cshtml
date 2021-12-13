@@ -9,25 +9,26 @@
             <div>
                 <form asp-controller="Timetable" asp-action="ByClassrooms" method="post">
                     <p>
-                            Номер аудитории: <input type="text" name="searchString" />
+                        Номер аудитории: <input type="text" name="searchString" />
                         <input type="submit" value="Поиск" class="searchButton" />
                     </p>
                 </form>
-                    <div>
-                        <a asp-controller="Timetable" asp-action="Create" class="btn createButton">
-                            <span>Добавить запись</span>
-                        </a>
-                    </div>
+                <div>
+                    <a asp-controller="Timetable" asp-action="Create" class="btn btn-outline-primary">
+                        <span>Добавить запись</span>
+                    </a>
+                </div>
+                <br>
             </div>
         </div>
-        <table class="table table-hover">
-            <thead>
+        <table class="table table-bordered">
+            <thead class="thead-light">
                 <tr>
                     @foreach (var item in Model)
                     {
                         @if (item == Model.First())
                         {
-                    <th>
+                            <th>
                                 @Html.DisplayNameFor(model => item.Classroom)
                             </th>
                             <th>
@@ -37,7 +38,7 @@
                                 @Html.DisplayNameFor(model => item.Day)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => item.BellID)
+                                @Html.DisplayNameFor(model => item.Bell)
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => item.Discipline)
@@ -51,7 +52,6 @@
                             <th>
                                 @Html.DisplayNameFor(model => item.Teacher)
                             </th>
-                            
                             <th>
                                 @Html.DisplayNameFor(model => item.Semester)
                             </th>
@@ -67,38 +67,37 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <th>
+                        <td>
                             @Html.DisplayFor(model => item.Classroom)
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @Html.DisplayFor(model => item.Date)
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @Html.DisplayFor(model => item.Day)
-                        </th>
-                        <th>
-                            @Html.DisplayFor(model => item.BellID)
-                        </th>
-                        <th>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Bell)
+                        </td>
+                        <td>
                             @Html.DisplayFor(model => item.Discipline)
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @Html.DisplayFor(model => item.ActivityType)
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @Html.DisplayFor(model => item.Group)
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @Html.DisplayFor(model => item.Teacher)
-                        </th>
-                        
-                        <th>
+                        </td>
+                        <td>
                             @Html.DisplayFor(model => item.Semester)
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             <a asp-action="Update" asp-controller="Timetable" asp-route-id="@item.ID" class="editLabel">Редактирование</a>
                             <a asp-action="Delete" asp-controller="Timetable" asp-route-id="@item.ID" class="deleteLabel">Удаление</a>
-                        </th>
+                        </td>
                     </tr>
 
                 }

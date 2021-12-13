@@ -48,6 +48,7 @@ namespace TimetableApp.DataAccess.Repositories
             Teacher teacher = db.Teachers.Find(id);
             if (teacher != null)
                 db.Teachers.Remove(teacher);
+            db.SaveChanges();
         }
     }
 }

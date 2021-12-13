@@ -26,5 +26,6 @@ namespace TimetableApp.Business.DTO
         public TeacherDTO Teacher { get; set; }
         public ClassroomDTO Classroom { get; set; }
         public SemesterDTO Semester { get; set; }
+
     }
 }

@@ -26,5 +26,7 @@ namespace TimetableApp.DataAccess.Entities
         public Teacher Teacher { get; set; }
         public Classroom Classroom { get; set; }
         public Semester Semester { get; set; }
+
+
     }
 }

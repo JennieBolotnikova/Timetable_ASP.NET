@@ -7,14 +7,11 @@ namespace TimetableApp.Business.DTO
 {
     public class GroupDTO
     {
-
         public int GroupID { get; set; }
-
         public string GroupName { get; set; }
         public int GroupNumber { get; set; }
         public int FacultyID { get; set; }
         public int NumberOfStudents { get; set; }
-
         public FacultyDTO Faculty { get; set; }
 
     }

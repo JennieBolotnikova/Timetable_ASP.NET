@@ -2,68 +2,85 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<div class="container">
-    <div class="table-wrapper">
-        <div class="table-title">
-            <div>
-                <form asp-controller="Discipline" asp-action="Index">
-                    <p>
-                        Дисциплина: <input type="text" name="searchString" />
-                        <input type="submit"  value="Поиск" class="searchButton"  />
-                    </p>
-                </form>
+<body style=" background-color: #E6F0FA;">
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
                 <div>
-                    <a asp-controller="Discipline" asp-action="Create" class="btn createButton">
-                        <span>Добавить запись</span>
-                    </a>
+                    <form asp-controller="Discipline" asp-action="Index">
+                        <p>
+                            Дисциплина: <input type="text" name="searchString" />
+                            <input type="submit" value="Поиск" class="searchButton" />
+                        </p>
+                    </form>
+                    <div>
+                        <a asp-controller="Discipline" asp-action="Create" class="btn btn-outline-primary">
+                            <span>Добавить запись</span>
+                        </a>
+                    </div>
+                    <br>
                 </div>
             </div>
-        </div>
-        <table class="table table-hover">
-            <thead>
-                <tr>
+            <table class="table table-bordered" style="background-color: white; box-shadow: 10px white;">
+                <thead class="thead-light">
+                    <tr>
+                        @foreach (var item in Model)
+                        {
+                            @if (item == Model.First())
+                            {
+                                <th>
+                                    @Html.DisplayNameFor(model => item.DisciplineNmae)
+                                </th>
+                                <th>Действия</th>
+                            }
+                        }
+                    </tr>
+                </thead>
+                <tbody>
                     @foreach (var item in Model)
                     {
-                        @if (item == Model.First())
-                        {
-                            <th>
-                                @Html.DisplayNameFor(model => item.DisciplineNmae)
-                            </th>
-                            <th>Действия</th>
-                        }
-                    }
-                        </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
+                        <tr>
 
-                        <td>
-                            @Html.DisplayFor(model => item.DisciplineNmae)
-                        </td>
-                        <td>
-                            <a asp-action="Update" asp-controller="Discipline" asp-route-id="@item.DisciplineID" class="editLabel">Редактирование</a>
-                            <a asp-action="Delete" asp-controller="Discipline" asp-route-id="@item.DisciplineID" class="deleteLabel">Удаление</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-        @{
-            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-        }
-        <a asp-action="Index"
-           asp-route-pageNumber="@(Model.PageIndex - 1)"
-           class="btn btn-default @prevDisabled">
-            Previous
-        </a>
-        <a asp-action="Index"
-           asp-route-pageNumber="@(Model.PageIndex + 1)"
-           class="btn btn-default @nextDisabled">
-            Next
-        </a>
+                            <td>
+                                @Html.DisplayFor(model => item.DisciplineNmae)
+                            </td>
+                            <td>
+                                <a asp-action="Update" asp-controller="Discipline" asp-route-id="@item.DisciplineID" class="editLabel btn btn-outline-primary">Редактировать</a>
+                                <a asp-action="Delete" asp-controller="Discipline" asp-route-id="@item.DisciplineID" class="deleteLabel btn btn-outline-danger">Удалить</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @{
+                var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+            }
+            <a asp-action="Index"
+               asp-route-pageNumber="@(Model.PageIndex - 1)"
+               class="btn btn-default @prevDisabled">
+                Previous
+            </a>
+            <a asp-action="Index"
+               asp-route-pageNumber="0"
+               class="btn btn-default @prevDisabled">
+                First
+            </a>
+            <a asp-action="Index"
+               asp-route-pageNumber="@(Model.PageIndex)"
+               class="btn btn-default @prevDisabled">
+                @(Model.PageIndex)
+            </a>
+            <a asp-action="Index"
+               asp-route-pageNumber="@(Model.TotalPages)"
+               class="btn btn-default @nextDisabled">
+                Last
+            </a>
+            <a asp-action="Index"
+               asp-route-pageNumber="@(Model.PageIndex + 1)"
+               class="btn btn-default @nextDisabled">
+                Next
+            </a>
+        </div>
     </div>
-</div>
+    </body>

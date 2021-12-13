@@ -1,55 +1,51 @@
-﻿@model TimetableApp.Web.Models.TimetableViewModel
+﻿@model TimetableApp.Web.Models.CreateTimetableViewModel
 @{ ViewData["Title"] = "Обновление"; }
 
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post" asp-action="Update" asp-route-id="@Model.ID">
+        <form method="post" asp-action="Update" asp-route-id="@Model.TimetableViewModel.ID">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @Html.HiddenFor(x => x.TimetableViewModel.ID)
             <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
-                <span asp-validation-for="Date" class="text-danger"></span>
+                <label asp-for="TimetableViewModel.Day" class="control-label"></label>
+                @Html.DropDownListFor(m => m.SelectedDayIds, new SelectList(Model.Days, "DayID", "DayName"))
+                <span asp-validation-for="TimetableViewModel.Day" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Day" class="control-label"></label>
-                <input asp-for="Day" class="form-control" />
-                <span asp-validation-for="Day" class="text-danger"></span>
+                <label asp-for="TimetableViewModel.Bell" class="control-label"></label>
+                @Html.DropDownListFor(m => m.SelectedBellIds, new SelectList(Model.Bells, "BellID", "LessonStartTime"))
+                <span asp-validation-for="TimetableViewModel.Bell" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BellID" class="control-label"></label>
-                <input asp-for="BellID" class="form-control" />
-                <span asp-validation-for="BellID" class="text-danger"></span>
+                <label asp-for="TimetableViewModel.Discipline" class="control-label"></label>
+                @Html.DropDownListFor(m => m.SelectedDisciplineIds, new SelectList(Model.Disciplines, "DisciplineID", "DisciplineNmae"))
+                <span asp-validation-for="TimetableViewModel.Discipline" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Discipline" class="control-label"></label>
-                <input asp-for="Discipline" class="form-control" />
-                <span asp-validation-for="Discipline" class="text-danger"></span>
+                <label asp-for="TimetableViewModel.ActivityType" class="control-label"></label>
+                @Html.DropDownListFor(m => m.SelectedActivityTypeIds, new SelectList(Model.ActivityTypes, "ActivityTypeID", "ActivityTypeName"))
+                <span asp-validation-for="TimetableViewModel.ActivityType" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ActivityType" class="control-label"></label>
-                <input asp-for="ActivityType" class="form-control" />
-                <span asp-validation-for="ActivityType" class="text-danger"></span>
+                <label asp-for="TimetableViewModel.Group" class="control-label"></label>
+                @Html.DropDownListFor(m => m.SelectedGroupIds, new SelectList(Model.Groups, "GroupID", "GroupName"))
+                <span asp-validation-for="TimetableViewModel.Group" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Group" class="control-label"></label>
-                <input asp-for="Group" class="form-control" />
-                <span asp-validation-for="Group" class="text-danger"></span>
+                <label asp-for="TimetableViewModel.Teacher" class="control-label"></label>
+                @Html.DropDownListFor(m => m.SelectedTeacherIds, new SelectList(Model.Teachers, "TeacherID", "TeacherName"))
+                <span asp-validation-for="TimetableViewModel.Teacher" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Teacher" class="control-label"></label>
-                <input asp-for="Teacher" class="form-control" />
-                <span asp-validation-for="Teacher" class="text-danger"></span>
+                <label asp-for="TimetableViewModel.Classroom" class="control-label"></label>
+                @Html.DropDownListFor(m => m.SelectedClassroomIds, new SelectList(Model.Classrooms, "ClassroomID", "ClassroomNumber"))
+                <span asp-validation-for="TimetableViewModel.Classroom" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Classroom" class="control-label"></label>
-                <input asp-for="Classroom" class="form-control" />
-                <span asp-validation-for="Classroom" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Semester" class="control-label"></label>
-                <input asp-for="Semester" class="form-control" />
-                <span asp-validation-for="Semester" class="text-danger"></span>
+                <label asp-for="TimetableViewModel.Semester" class="control-label"></label>
+                @Html.DropDownListFor(m => m.SelectedSemesterIds, new SelectList(Model.Semesters, "SemesterID", "SemesterTitle"))
+                <span asp-validation-for="TimetableViewModel.Semester" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Сохранить" class="btn btn-primary" />
